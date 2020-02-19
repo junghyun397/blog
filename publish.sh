@@ -1,29 +1,28 @@
+#!/bin/bash
 
-#!/bin/sh
+echo -e "\033[0;32mDeploying updates to GitHub...\033[0m"
 
-if [ "`git status -s`" ]
-then
-    echo "The working directory is dirty. Please commit any pending changes."
-    exit 1;
+hugo -t hugo-notepadium
+
+cd public
+git add .
+
+msg="rebuilding site `date`"
+if [ $# -eq 1 ]
+  then msg="$1"
 fi
+git commit -m "$msg"
 
-echo "Deleting old publication"
-rm -rf public
-mkdir public
-git worktree prune
-rm -rf .git/worktrees/public/
+git push origin master
 
-echo "Checking out gh-pages branch into public"
-git worktree add -B gh-pages public upstream/gh-pages
+cd ..
 
-echo "Removing existing files"
-rm -rf public/*
+git add .
 
-echo "Generating site"
-hugo
+msg="rebuilding site `date`"
+if [ $# -eq 1 ]
+  then msg="$1"
+fi
+git commit -m "$msg"
 
-echo "Updating gh-pages branch"
-cd public && git add --all && git commit -m "Publishing to gh-pages (publish.sh)"
-
-#echo "Pushing to github"
-#git push --all
+git push origin master
