@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>junghyun397 Blog</title>
+    <link>/</link>
+    <description>Recent content on junghyun397 Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>ko-kr</language>
+    <copyright>©2020 junghyun397.</copyright>
+    
+        <atom:link href="/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+  </channel>
+</rss>

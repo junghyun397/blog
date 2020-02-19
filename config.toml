@@ -1,0 +1,51 @@
+baseURL = "https://do1ph.in"
+title = "junghyun397 Blog"
+theme = "hugo-notepadium"
+copyright = "©2020 junghyun397."
+
+languageCode = "ko-kr"
+hasCJKLanguage = true
+
+enableRobotsTXT = true
+
+# Enable Disqus
+#disqusShortname = "XXX"
+
+# Google Analytics
+#googleAnalytics = "UA-158778546-1"
+
+[markup.highlight]
+codeFences = true
+noClasses = false
+
+[markup.goldmark.renderer]
+unsafe = true
+
+[params]
+style = "auto"
+logo = ""
+slogan = "Maybe JeongHyeon Choi's blog."
+license = "WTFPL"
+
+[params.comments]
+enable = true
+
+[params.math]
+enable = true
+use = "katex"
+
+[params.syntax]
+use = "none"
+theme = "xcode"
+darkTheme = "xcode-dark"
+
+[params.nav]
+showCategories = true
+showTags = true
+
+# custom navigation items
+
+[[params.nav.custom]]
+title = "About"
+url = "/about"
+
