@@ -9,10 +9,10 @@ hasCJKLanguage = true
 enableRobotsTXT = true
 
 # Enable Disqus
-#disqusShortname = "XXX"
+disqusShortname = "do1phin"
 
 # Google Analytics
-#googleAnalytics = "UA-158778546-1"
+googleAnalytics = "UA-158778546-1"
 
 [markup.highlight]
 codeFences = true
@@ -48,4 +48,12 @@ showTags = true
 [[params.nav.custom]]
 title = "About"
 url = "/about"
+
+[[params.nav.custom]]
+title = "Github"
+url = "https://github.com/junghyun397"
+
+[[params.nav.custom]]
+title = "CV"
+url = "/CV"
 
