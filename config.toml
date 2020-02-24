@@ -25,7 +25,6 @@ unsafe = true
 style = "auto"
 logo = ""
 slogan = "Maybe JeongHyeon Choi's blog."
-license = "WTFPL"
 
 [params.comments]
 enable = true

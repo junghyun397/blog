@@ -13,6 +13,7 @@ if [ $# -eq 1 ]
 fi
 git commit -m "$msg"
 
+git pull --rebase origin master
 git push origin master
 
 cd ..
@@ -25,4 +26,5 @@ if [ $# -eq 1 ]
 fi
 git commit -m "$msg"
 
+git pull --rebase origin master
 git push origin master
