@@ -39,8 +39,8 @@ theme = "xcode"
 darkTheme = "xcode-dark"
 
 [params.nav]
-showCategories = true
-showTags = true
+showCategories = false
+showTags = false
 
 # custom navigation items
 
@@ -51,8 +51,4 @@ url = "/about"
 [[params.nav.custom]]
 title = "Github"
 url = "https://github.com/junghyun397"
-
-[[params.nav.custom]]
-title = "CV"
-url = "/CV"
 
