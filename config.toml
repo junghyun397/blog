@@ -39,10 +39,18 @@ theme = "xcode"
 darkTheme = "xcode-dark"
 
 [params.nav]
-showCategories = false
-showTags = false
+showCategories = true
+showTags = true
 
 # custom navigation items
+
+[[params.nav.custom]]
+title = "Categories"
+url = "/categories"
+
+# [[params.nav.custom]]
+# title = "Tgas"
+# url = "/tags"
 
 [[params.nav.custom]]
 title = "About"

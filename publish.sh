@@ -6,6 +6,8 @@ echo -e "[+] start build static page with hugo theme..."
 
 hugo -t hugo-notepadium
 
+hugo -t hugo-notepadium
+
 echo -e "[o] succeed build static page with hugo..."
 
 cd public
