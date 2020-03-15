@@ -48,9 +48,9 @@ showTags = true
 title = "Categories"
 url = "/categories"
 
-# [[params.nav.custom]]
-# title = "Tgas"
-# url = "/tags"
+[[params.nav.custom]]
+title = "Tgas"
+url = "/tags"
 
 [[params.nav.custom]]
 title = "About"

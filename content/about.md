@@ -1,8 +1,9 @@
 +++
 title = "About"
+description = "junghyun397 개인블로그, 소개 페이지"
 date = 2020-02-29T00:37:08+09:00
+aliases = ["about-blog", "contact"]
 autor = "junghyun397"
-
 +++
 
 junghyun397 블로그, **[do1ph.in](https://do1ph.in)**
