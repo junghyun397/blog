@@ -8,11 +8,18 @@ hasCJKLanguage = true
 
 enableRobotsTXT = true
 
+pygmentsCodefences = true
+
 # Enable Disqus
 disqusShortname = "do1phin"
 
 # Google Analytics
 googleAnalytics = "UA-158778546-1"
+
+[markup.tableOfContents]
+endLevel = 3
+ordered = false
+startLevel = 2
 
 [markup.highlight]
 codeFences = true
