@@ -5,7 +5,6 @@ date = 2020-04-25T19:00:00+09:00
 description = "최근 릴리스 된 우분투 20.04 장기 지원 버전을 기준으로 설치 후 필요한 작업 환경 구성 과정을 정리해 봤습니다."
 categories = ["linux"]
 tags = ["ubuntu", "gnome"]
-series = ["Template Guidline"]
 
 +++
 
@@ -122,7 +121,7 @@ git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:
 
 이후 ``~/.zshrc``에서 ``plugins=(git zsh-syntax-highlighting)``을 설정한 뒤, ``source ~/.zshrc``를 입력해 적용합니다.
 
-**agnoster theme**:  powerline폰트를 이용해 터미널을 미려하게 꾸며주는 agnoster테마입니다. ``~/.zshrc``에서 ``THEME="agnoster"``를 설정한 뒤, ``source ~/.zshrc``를 입력해 적용합니다.
+**agnoster theme**:  ``powerline`` 폰트를 이용해 터미널을 미려하게 꾸며주는 ``agnoster`` 테마입니다. ``~/.zshrc``에서 ``THEME="agnoster"``를 설정한 뒤, ``source ~/.zshrc``를 입력해 적용합니다.
 
 **Vundle/airline/syntastics**: ``vim`` 을 위한 플러그인 관리 툴과 UI개선 플러그인, 문법 체크 플러그인입니다. ``~/.vim/bundle/Vundle.vim``폴더에 ``Vundle`` 을 클론 해줍니다.
 
@@ -248,12 +247,12 @@ sudo apt install nvidia-smi # Nvidia 그래픽 카드를 사용하고 있다면,
 
 ## Dolphin Background Image
 
-큰 화면과 파랑 계열의 테마에 어울리는 ``단색기반 배경화면`` 과 작은 화면과 yaru 테마에 어울리는 ``그라이데션기반 배경화면`` 이 준비돼 있습니다. ``진정한 돌고래러`` 라면 배경화면도 돌고래입니다.
+큰 화면과 파랑 계열의 테마에 어울리는 ``단색기반 배경화면`` 과 작은 화면과 ``yaru`` 테마에 어울리는 ``그라이데션기반 배경화면`` 이 준비되어 있습니다. ``진정한 돌고래러`` 라면 배경화면도 돌고래입니다.
 
-**ubuntu-orange**: 우분투 스타일의 그라이데션을 배경으로 사용한 바탕화면입니다. 13.3인치 화면에 맞추어 제작되었으며, ``16:9``, ``3200x1800`` 해상도가 준비돼 있습니다.
+**ubuntu-orange**: 우분투 스타일의 그라이데션을 배경으로 사용한 바탕화면입니다. ``13.3인치`` 화면에 맞추어 제작되었으며, ``16:9``, ``3200x1800`` 해상도가 준비돼 있습니다. [여기](https://user-images.githubusercontent.com/32453112/80272788-77a45280-8707-11ea-95d8-f87149de8423.png)를 눌러 원본 크기로 다운로드 합니다.
 
-![Orange](https://user-images.githubusercontent.com/32453112/80272788-77a45280-8707-11ea-95d8-f87149de8423.png)
+![orange-resized](https://user-images.githubusercontent.com/32453112/80278299-088f2400-8730-11ea-9b51-71e286b0567a.png)
 
-**blue**: 단색 파랑을 배경으로 사용한 바탕화면 입니다. 29인치 화면에 맞추어 제작되었으며, ``21:9``, ``2560x1080`` 해상도가 준비돼 있습니다.
+**blue**: 단색 파랑을 배경으로 사용한 바탕화면 입니다. ``29인치`` 화면에 맞추어 제작되었으며, ``21:9``, ``2560x1080`` 해상도가 준비돼 있습니다. [여기](https://user-images.githubusercontent.com/32453112/80272782-69563680-8707-11ea-952d-227e894c5e95.png)를 눌러 원본 크기로 다운로드 합니다.
 
-![Blue](https://user-images.githubusercontent.com/32453112/80272782-69563680-8707-11ea-952d-227e894c5e95.png)
+![blue](https://user-images.githubusercontent.com/32453112/80272782-69563680-8707-11ea-952d-227e894c5e95.png)
