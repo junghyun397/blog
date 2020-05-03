@@ -4,6 +4,7 @@ description = "junghyun397 개인블로그, 소개 페이지"
 date = 2020-02-29T00:37:08+09:00
 aliases = ["about-blog", "contact"]
 autor = "junghyun397"
+comments = false
 +++
 
 junghyun397 블로그, **[do1ph.in](https://do1ph.in)**
@@ -12,7 +13,7 @@ junghyun397 블로그, **[do1ph.in](https://do1ph.in)**
 
 * 모든 블로그의 글들은 [Public Domain(CC0)](https://creativecommons.org/share-your-work/public-domain/)라이선스로 배포됩니다. *양심이 허락하는 한* 어디든 마음대로 가져다 쓰셔도 좋습니다.
 * 정적 페이지 생성기 Hugo를 이용해 생성되었으며, Github-pages를 이용해 호스팅 됩니다. 마크다운으로 작성된 원본 포스트는 [blog 저장소](https://github.com/junghyun397/junghyun397.github.io)를, 마크업으로 변환돼 현재 호스팅 되고 있는 블로그는 [junghyun397.github.io 저장소](https://github.com/junghyun397/junghyun397.github.io)에서 확인하실 수 있습니다.
-* 다크 테마를 지원합니다. 기본적으로 시스템/브라우저 설정에 따라 자동으로 다크 테마를 표시하지만, 아래 있는 테마 토글 버튼을 발견하셨다면 원하시는 테마로 바꾸실 수 있습니다.
+* 다크 테마를 지원합니다. 기본적으로 시스템/브라우저 설정에 따라 자동으로 다크 테마를 표시합니다. 애석하게도 테마 토글 버튼은 존재하지 않습니다.
 * RSS 피드는 [여기](https://do1ph.in/index.xml)에 있습니다.
 
 더 궁금한 내용이나 문의사항이 있다면, junghyun397@gmail.com이나 아래 적혀있는 연락처로 연락 부탁드립니다. :)

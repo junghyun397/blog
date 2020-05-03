@@ -14,11 +14,6 @@ disqusShortname = "do1phin"
 # Google Analytics
 googleAnalytics = "UA-158778546-1"
 
-[markup.tableOfContents]
-endLevel = 3
-ordered = false
-startLevel = 2
-
 [markup.highlight]
 codeFences = true
 noClasses = false
@@ -30,6 +25,7 @@ unsafe = true
 style = "auto"
 logo = ""
 slogan = "Maybe JeongHyeon Choi's blog."
+custom_css = ["css/dark-style.css", "css/style.css"]
 
 [params.comments]
 enable = true
@@ -40,8 +36,8 @@ use = "katex"
 
 [params.syntax]
 use = "none"
-theme = "xcode"
-darkTheme = "xcode-dark"
+theme = "solarized-light"
+darkTheme = "solarized-dark"
 
 [params.nav]
 showCategories = true
