@@ -8,8 +8,6 @@ hasCJKLanguage = true
 
 enableRobotsTXT = true
 
-pygmentsCodefences = true
-
 # Enable Disqus
 disqusShortname = "do1phin"
 

@@ -2,13 +2,7 @@
 
 echo -e "[i] start upload changes to github..."
 
-echo -e "[+] start build static page with hugo theme..."
-
 hugo -t hugo-notepadium
-
-hugo -t hugo-notepadium
-
-echo -e "[o] succeed build static page with hugo..."
 
 cd public
 git add .
@@ -21,11 +15,15 @@ git commit -m "$msg"
 
 git pull --rebase origin master
 
+echo -e "-------------------------------------------------"
 echo -e "[+] start upload changes; settings and document..."
+echo -e "-------------------------------------------------"
 
 git push origin master
 
+echo -e "-------------------------------------------------"
 echo -e "[o] succeed upload settings and documnent changes"
+echo -e "-------------------------------------------------"
 
 cd ..
 
@@ -39,8 +37,13 @@ git commit -m "$msg"
 
 git pull --rebase origin master
 
+echo -e "-------------------------------------------------"
 echo -e "[+] start upload changes; static pages"
+echo -e "-------------------------------------------------"
 
 git push origin master
 
+echo -e "-------------------------------------------------"
 echo -e "[o] succeed upload static pages; end."
+echo -e "-------------------------------------------------"
+

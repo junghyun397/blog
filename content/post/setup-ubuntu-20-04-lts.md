@@ -5,7 +5,6 @@ date = 2020-04-25T19:00:00+09:00
 description = "최근 릴리스 된 우분투 20.04 장기 지원 버전을 기준으로 설치 후 필요한 작업 환경 구성 과정을 정리해 봤습니다."
 categories = ["linux"]
 tags = ["ubuntu", "gnome"]
-
 +++
 
 ``우분투 20.04 장기 지원 버전(LTS)`` 이 릴리스 되었습니다. 매번 OS를 새로 설치할 때마다 삽질하지 않도록 우분투를 처음 설치했을 때 작업 환경을 세팅하는 과정을 글로 정리해 봤습니다. ``ifcitx-hangul`` 설정과 ``uim-byeoru`` 설정, ``oh-my-zsh`` 설정과 ``vundle`` 등의 설정을 포함합니다.
@@ -14,16 +13,16 @@ tags = ["ubuntu", "gnome"]
 * 최소한 ``22.04 LTS``가 나오기 전까지는 계속 업데이트될 예정입니다.
 * ``Ubuntu 20.04 LTS``, 영문 기준으로 작성되었으며, ``RYZEN 1700 + GTX1080 + NVMe SSD `` 데스크톱과 ``DELL XPS 13 9350`` 랩톱 하드웨어에서 정상 작동을 확인했습니다.
 
-본격적으로 환경을 구성하기 전에, 저장소 업데이트, ``git`` 그리고 ``vim`` 을 설치해 줘야 합니다.
+본격적으로 환경을 구성하기 전에, 저장소 업데이트 및 ``git``, ``curl``, ``vim``, ``build-essential``, ``cmake``, ``clang`` 을 설치해 줘야 합니다.
 
 ```sh
 sudo apt update
-sudo apt install git
-sudo apt install vim
+sudo apt install git vim curl
+sudo apt install build-essential cmake clang
 ```
 
 
-## Shell Extension
+## Shell Extension {#shell-extension}
 
 **GNOME Tweaks/Extension**: 심각할 정도로 부실하기 짝이 없는 GNOME의 Settings를 *그나마 덜* 심각하게 바꿔줄 앱입니다.
 
@@ -38,23 +37,7 @@ sudo apt install gnome-shell-extensions
 
 **GSconnect**: KDE 에서 제공하는 모바일-PC 연결 기능인 ``KDE Connect`` 를 GNOME 에서도 사용할 수 있게 해줍니다. [apt://gnome-shell-extension-gsconnect](apt://gnome-shell-extension-gsconnect)링크를 타고 들어가 설치를 진행합니다.
 
-## Shell Theme
-
-*소형 기기에는 기본 yaru-dark 테마를 사용합니다.*
-
-우선 ``~/.themes`` 폴더와 ``~/.icons`` 폴더를 생성해야 합니다.
-
-```sh
-mkdir ~/.themes
-mkdir ~/.icons
-```
-
-**Sierra-dark-solid**: OSX Sierra의 디자인을 어느 정도 채용한 GTK3 테마입니다. https://www.gnome-look.org/p/1013714/ 에서 다운로드 후 ``~/.themes`` 폴더에 압축 해제해 설치 합니다.
-
-**Flat-Remix-Blue-Dark**: 기본 아이콘들을 Flat하게 재해석한 아이콘 팩입니다. 기본 제공 아이콘 외에도 여러가지 자주 쓰는 앱들의 아이콘도 준비돼 있습니다. https://www.gnome-look.org/p/1012430/ 에서 다운로드 후 ``~/.icons`` 폴더에 압축 해제해 설치합니다.
-
-
-## Keyboard Input - 한글
+## Keyboard Input - 한글 {#keyboard-input-hangul}
 
 한국인 우분투 사용자의 최대 난제, 한글 입력 문제입니다. 보통 ``fcitx-hangul``, ``uim-byeory``, ``ibus-hangul`` 을 많이 사용하는데, 여기서는 현시점에서 가장 쓸만 하다고 판단되는 ``fcitx-gangul`` 과 ``uim-byeoru`` 설치법만을 소개하겠습니다.
 
@@ -81,7 +64,7 @@ sudo apt install uim uim-byeoru
 5. ``Multi_key`` 를 인식해 ``ON/OFF`` 에 할당했다면, ``Apply`` 를 눌러 적용합니다. 적용되었다면 재부팅 하여 오른쪽 아래에 uim ui가 뜨는지 확인합니다.
 
 
-## Terminal Theme
+## Terminal Theme {#terminal-theme}
 
 **Solarized**: 눈에 부담이 덜 가는 무채색 계열 테마입니다.
 
@@ -92,7 +75,7 @@ git clone git://github.com/sigurdga/gnome-terminal-colors-solarized.git /tmp/sol
 
 ``1, 1, YES`` 를 차례로 선택합니다. 터미널의 텍스트 컬러를 ``#A3B4B6``, 배경 컬러를 ``#292929`` 로 설정, 배경 투명 효과를 ``3%`` 정도를 줘서 마무리합니다.
 
-## Terminal Extension
+## Terminal Extension {#terminal-extension}
 
 **fonts-powerline**: ``powerline`` 문자를 지원하게 해주는 폰트입니다.
 
@@ -110,7 +93,7 @@ chsh -s /usr/bin/zsh
 이후 재부팅 해보면 기본 쉘이 ``zsh`` 로 바뀐 것을 확인할 수 있습니다. 이제 ``oh my zsh`` 를 설치하면 됩니다.
 
 ```sh
-sh -c "$(wget https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)"
+wget https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O - | sh
 ```
 
 **zsh-syntax-highlighting**: ``Fish shell`` 과 비슷한 방식으로 ``zsh`` 에서 타이핑한 명령어를 자동으로 HighLighting해주는 플러그인입니다. ``oh-my-zsh`` 커스텀 폴더에 플러그인 저장소를 clone해줍니다.
@@ -123,7 +106,7 @@ git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:
 
 **agnoster theme**:  ``powerline`` 폰트를 이용해 터미널을 미려하게 꾸며주는 ``agnoster`` 테마입니다. ``~/.zshrc``에서 ``THEME="agnoster"``를 설정한 뒤, ``source ~/.zshrc``를 입력해 적용합니다.
 
-**Vundle/airline/syntastics**: ``vim`` 을 위한 플러그인 관리 툴과 UI개선 플러그인, 문법 체크 플러그인입니다. ``~/.vim/bundle/Vundle.vim``폴더에 ``Vundle`` 을 클론 해줍니다.
+**Vundle/airline/syntastics** ``vim`` 을 위한 플러그인 관리 툴과 UI개선 플러그인, 문법 체크 플러그인입니다. 우선``~/.vim/bundle/Vundle.vim``폴더에 ``Vundle`` 을 클론 해줍니다.
 
 ```sh
 git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
@@ -156,6 +139,7 @@ Plugin 'scrooloose/syntastic'
 call vundle#end()
 filetype plugin indent on
 
+"" settings-syntastic
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
@@ -168,15 +152,11 @@ let g:syntastic_check_on_wq = 0
 
 설정을 추가했다면 ``vim`` 을 실행한 뒤, ``:PluginInstall`` 명령어를 입력해 플러그인 설치를 완료합니다.
 
-## SDK/Service
+## SDK/API {#sdk-and-api}
 
 **Anaconda**: Python 가상 환경을 쉽게 관리하기 위한 툴입니다. 요즘은 Docker를 더 쓴다고는 하지만... 공식 홈페이지 - https://www.anaconda.com/distribution/#linux 에서 다운로드받아 설치합니다.
 
-**CUDA**: *Nvidia 그래픽 카드가 설치된 시스템에 설치해야 합니다.*
-
-**CuDNN**: *Nvidia 그래픽 카드가 설치된 시스템에 설치해야 합니다.*
-
-**Apache2 / PHP7**: 간단한 시스템 정보를 서비스하기 위해 사용합니다. *DDNS가 설정된 공유기에 유선으로 연결된 데스크톱에만 설치합니다.*
+**Apache2 / PHP7**: 간단한 시스템 정보를 서비스하기 위해 사용합니다.
 
 ```sh
 sudo apt install apache2
@@ -186,20 +166,23 @@ sudo apt update
 sudo apt install php7.4
 ```
 
-## Editor
+**CUDA**: *Nvidia 그래픽 카드가 설치된 시스템에 설치해야 합니다.*
+
+**CuDNN**: *Nvidia 그래픽 카드가 설치된 시스템에 설치해야 합니다.*
+
+**HUGO**: 블로그 포스트를 작성하고 확인하기 위해 사용합니다.
+
+```sh
+sudo apt install hugo
+```
+
+## Programming {#programming}
 
 **Jetbrains Toolbox**: Jetbrains의 IDE를 관리해 주는 앱입니다. ``InetlliJ IDEA``, ``PyChram``, ``CLion`` 을 설치합니다. 공식 홈페이지 - https://www.jetbrains.com/ko-kr/toolbox-app/ 에서 다운로드받습니다.
 
-**Typora**: 깔끔한 Markdown Editor입니다. 
+## Internet {#internet}
 
-```sh
-wget -qO - https://typora.io/linux/public-key.asc | sudo apt-key add -
-sudo add-apt-repository 'deb https://typora.io/linux ./'
-sudo apt-get update
-sudo apt-get install typora
-```
-
-## Network 
+**Chrome**: 적절한 웹 브라우저 입니다. 공식 홈페이지 - https://www.google.com/intl/en/chrome/ 에서 다운로드 받아 설치합니다.
 
 **FileZilla**: 사실 기본 내장된 ``nautilus`` 에서도 sftp와 ftp를 지원하지만, 아무튼 설치합니다.
 
@@ -214,13 +197,7 @@ sudo apt install wireshark
 sudo adduser $USER wireshark
 ```
 
-## Media Player/Editor
-
-**VLC Player**: 적절한 오픈소스 미디어 플레이어 입니다.
-
-```sh
-sudo snap install vlc
-```
+## Graphics {#graphics}
 
 **GIMP**: 포토샵에 대응하는 적절한 오픈소스 이미지 편집 프로그램 입니다.
 
@@ -238,14 +215,53 @@ sudo apt update
 sudo apt install blender
 ```
 
-## Etc
+## Office {#office}
+
+**Typora**: 깔끔한 Markdown Editor입니다. 
+
+```sh
+wget -qO - https://typora.io/linux/public-key.asc | sudo apt-key add -
+sudo add-apt-repository 'deb https://typora.io/linux ./'
+sudo apt update
+sudo apt install typora
+```
+
+**HUGO**: 정적 블로그 생성 툴 입니다.
+
+```shell
+sudo apt install hugo
+```
+
+## Sound/Video {#sound-and-video}
+
+**VLC Player**: 적절한 오픈소스 미디어 플레이어 입니다.
+
+```sh
+sudo snap install vlc
+```
+
+## Etc {#etc}
 
 ```sh
 sudo apt install screenfetch # 시스템 정보와 적절한 로고를 터미널에 띄워 줍니다.
 sudo apt install nvidia-smi # Nvidia 그래픽 카드를 사용하고 있다면, 그래픽 카드의 상태를 띄워 줍니다.
 ```
 
-## Dolphin Background Image
+## Shell Theme {#shell-theme}
+
+우선 ``~/.themes`` 폴더와 ``~/.icons`` 폴더를 생성해야 합니다.
+
+```sh
+mkdir ~/.themes
+mkdir ~/.icons
+```
+
+**Sierra-dark-solid**: OSX Sierra의 디자인을 어느 정도 채용한 GTK3 테마입니다. https://www.gnome-look.org/p/1013714/ 에서 다운로드 후 ``~/.themes`` 폴더에 압축 해제해 설치 합니다.
+
+**Flat-Remix-Blue-Dark**: 기본 아이콘들을 Flat하게 재해석한 아이콘 팩입니다. 기본 제공 아이콘 외에도 여러가지 자주 쓰는 앱들의 아이콘도 준비돼 있습니다. https://www.gnome-look.org/p/1012430/ 에서 다운로드 후 ``~/.icons`` 폴더에 압축 해제해 설치합니다.
+
+
+## Dolphin Background Image {#dolphin-background}
 
 큰 화면과 파랑 계열의 테마에 어울리는 ``단색기반 배경화면`` 과 작은 화면과 ``yaru`` 테마에 어울리는 ``그라이데션기반 배경화면`` 이 준비되어 있습니다. ``진정한 돌고래러`` 라면 배경화면도 돌고래입니다.
 
