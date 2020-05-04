@@ -1,0 +1,13 @@
+@media (prefers-color-scheme: dark) {
+
+code,
+kbd,
+tt,
+samp {
+  color: #000000;
+  padding: 3px;
+  border-radius: 3px;
+  background-color: #1f1f1f;
+}
+
+}

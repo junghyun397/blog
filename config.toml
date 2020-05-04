@@ -22,10 +22,12 @@ noClasses = false
 unsafe = true
 
 [params]
-style = "auto"
+style = "dark"
 logo = ""
 slogan = "Maybe JeongHyeon Choi's blog."
-custom_css = ["css/dark-style.css", "css/style.css"]
+
+[params.assets]
+css = ["css/light.css", "css/dark.css"]
 
 [params.comments]
 enable = true
@@ -36,8 +38,8 @@ use = "katex"
 
 [params.syntax]
 use = "none"
-theme = "solarized-light"
-darkTheme = "solarized-dark"
+theme = "xcode"
+darkTheme = "xcode-dark"
 
 [params.nav]
 showCategories = true
