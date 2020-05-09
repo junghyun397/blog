@@ -4,7 +4,7 @@ echo -e "-------------------------------------------------"
 echo -e "[i] start upload changes to github..."
 echo -e "-------------------------------------------------"
 
-hugo -t hugo-notepadium
+hugo -D
 
 cd public
 git add .

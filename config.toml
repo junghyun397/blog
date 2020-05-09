@@ -8,6 +8,9 @@ hasCJKLanguage = true
 
 enableRobotsTXT = true
 
+pygmentsCodefences = true
+pygmentsStyle = "pygments"
+
 # Enable Disqus
 disqusShortname = "do1phin"
 
@@ -22,12 +25,12 @@ noClasses = false
 unsafe = true
 
 [params]
-style = "dark"
+style = "auto"
 logo = ""
 slogan = "Maybe JeongHyeon Choi's blog."
 
 [params.assets]
-css = ["css/light.css", "css/dark.css"]
+css = ["css/custom-style.css"]
 
 [params.comments]
 enable = true
@@ -37,7 +40,7 @@ enable = true
 use = "katex"
 
 [params.syntax]
-use = "none"
+use = true
 theme = "xcode"
 darkTheme = "xcode-dark"
 

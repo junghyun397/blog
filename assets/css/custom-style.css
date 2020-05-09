@@ -1,0 +1,40 @@
+code,
+kbd,
+tt,
+samp {
+  color: #000000;
+  padding: 3px;
+  border-radius: 3px;
+  background-color: #f0f0f0;
+}
+
+pre {
+  display: block;
+  line-height: 1.45;
+  text-align: left;
+  font-size: 12px;
+  margin: 0;
+  padding: 6px 16px;
+  background-color: #f0f0f0;
+  border-radius: 2px;
+  border: 0px;
+}
+
+@media(prefers-color-scheme:dark) {
+
+code,
+kbd,
+tt,
+samp {
+  color: #d0d0d0;
+  padding: 3px;
+  border-radius: 3px;
+  background-color: #3f3f3f;
+}
+
+pre {
+  background-color: #0f0f04;
+}
+
+
+}

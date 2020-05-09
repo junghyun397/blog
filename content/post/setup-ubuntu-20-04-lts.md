@@ -16,21 +16,21 @@ tags = ["ubuntu", "gnome"]
 
 본격적으로 환경을 구성하기 전에, 저장소 업데이트 및 ``git``, ``curl``, ``vim``, ``build-essential``, ``cmake``, ``clang`` 을 설치해 줘야 합니다.
 
-{{<highlight shell>}}
+```shell
 sudo apt update
 sudo apt install git vim curl
 sudo apt install build-essential cmake clang
-{{</highlight>}}
+```
 
 
 ## Shell Extension {#shell-extension}
 
 **GNOME Tweaks/Extension**: 심각할 정도로 부실하기 짝이 없는 GNOME의 Settings를 *그나마 덜* 심각하게 바꿔줄 앱입니다.
 
-{{<highlight shell>}}
+```shell
 sudo apt install gnome-tweak-tool
 sudo apt install gnome-shell-extensions
-{{</highlight>}}
+```
 
 **Remap Control <-> CapsLock**: CapsLock 키의 위치는 적폐입니다. 그리 좋은 자리가 Control이 아니라 잘 쓰지도 않는 Caps키라니요. ``tweaks`` > ``Keyboard&Mouse`` > ``Keyboard`` > ``Additional Layout Options`` > ``Ctrl position`` > ``Swap Ctrl and Cpas Lock`` 을 활성화하여 청산합니다.
 
@@ -44,9 +44,9 @@ sudo apt install gnome-shell-extensions
 
 **fcitx-hangul**: 맞습니다. 악명이 자자한 가장 유명한 한글 입력기, ``fcitx`` 입니다. 예전보다 악명은 많이 줄었지만, 아직은 **크롬에서 사용 시 심각한 수준으로 불안정**한 모습을 보여 줍니다. 영 내키지는 않아도 ``fcitx`` 를 설치해 놓을 이유는 있습니다. **snap로 설치한 앱에서는 uim을 이용한 한글 입력이 불가능**합니다. 꼭 snap으로 설치한 앱에서 한글을 적어야 한다면, fcitx도 따로 설치해 두시기를 권장 드립니다. 우선 ``fcitx-hangul`` 을 설치합니다.
 
-{{<highlight shell>}}
+```shell
 sudo apt install fcitx-hangul
-{{</highlight>}}
+```
 
 ``Setting`` > ``Region & Language`` > ``Manage installed Language`` > ``Keyboard input method system`` > ``fcitx`` 을 선택해 ``fcitx-hangul`` 을 적용한 이후 ``Region & Language`` 로 다시 돌아가, ``+`` 버튼을 눌러 ``Korean(Hangul)`` 을 찾아 적용합니다.
 
@@ -54,9 +54,9 @@ sudo apt install fcitx-hangul
 
 **uim-byeoru**: **그나마** 안정적인 한글 입력기입니다. 한글이 아예 적히지 않는 경우가 적지 않지만, 깨져서 나온다거나 글자가 증발한다던가 하는 불안정한 동작은 확실히 ``fcitx`` 에 비해 덜합니다. 우선 ``uim`` 과 ``uim-byeoru`` 를 설치합니다.
 
-{{<highlight shell>}}
+```shell
 sudo apt install uim uim-byeoru
-{{</highlight>}}
+```
 
 1. 설치가 완료되었다면 ``Language Support`` > ``Keyboard input method system`` > ``uim`` 을 선택해 적용합니다.
 2. ``uim`` 에 진입하면 ``uim-pref-gtk`` UI 가 나옵니다. 여기서 ``Specify defuault IM`` 을 활성화한 뒤, ``Default Input Method`` 를 ``Byeoru`` 로 설정합니다.
@@ -69,10 +69,10 @@ sudo apt install uim uim-byeoru
 
 **Solarized**: 눈에 부담이 덜 가는 무채색 계열 테마입니다.
 
-{{<highlight shell>}}
+```shell
 git clone git://github.com/sigurdga/gnome-terminal-colors-solarized.git /tmp/solarized
 /tmp/solarized/install.sh
-{{</highlight>}}
+```
 
 ``1, 1, YES`` 를 차례로 선택합니다. 터미널의 텍스트 컬러를 ``#A3B4B6``, 배경 컬러를 ``#292929`` 로 설정, 배경 투명 효과를 ``3%`` 정도를 줘서 마무리합니다.
 
@@ -80,28 +80,28 @@ git clone git://github.com/sigurdga/gnome-terminal-colors-solarized.git /tmp/sol
 
 **fonts-powerline**: ``powerline`` 문자를 지원하게 해주는 폰트입니다.
 
-{{<highlight shell>}}
+```shell
 sudo apt install fonts-powerline
-{{</highlight>}}
+```
 
 **oh my zsh**: z쉘의 사용성을 개선해주는 툴입니다. 우선 ``zsh`` 를 설치하고 기본 쉘을 ``zsh`` 로 바꿔줘야 합니다.
 
-{{<highlight shell>}}
+```shell
 sudo apt install zsh
 chsh -s /usr/bin/zsh
-{{</highlight>}}
+```
 
 이후 재부팅 해보면 기본 쉘이 ``zsh`` 로 바뀐 것을 확인할 수 있습니다. 이제 ``oh my zsh`` 를 설치하면 됩니다.
 
-{{<highlight shell>}}
+```shell
 wget https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O - | sh
-{{</highlight>}}
+```
 
 **zsh-syntax-highlighting**: ``Fish shell`` 과 비슷한 방식으로 ``zsh`` 에서 타이핑한 명령어를 자동으로 HighLighting해주는 플러그인입니다. ``oh-my-zsh`` 커스텀 폴더에 플러그인 저장소를 clone해줍니다.
 
-{{<highlight shell>}}
+```shell
 git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
-{{</highlight>}}
+```
 
 이후 ``~/.zshrc``에서 ``plugins=(git zsh-syntax-highlighting)``을 설정한 뒤, ``source ~/.zshrc``를 입력해 적용합니다.
 
@@ -109,13 +109,13 @@ git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:
 
 **Vundle/airline/syntastics** ``vim`` 을 위한 플러그인 관리 툴과 UI개선 플러그인, 문법 체크 플러그인입니다. 우선``~/.vim/bundle/Vundle.vim``폴더에 ``Vundle`` 을 클론 해줍니다.
 
-{{<highlight shell>}}
+```shell
 git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
-{{</highlight>}}
+```
 
 이후 ``~/.vimrc`` 의 제일 위쪽에 아래 설정을 추가합니다. 이 설정은 미려한 Status-bar를 표시해주는 ``vim-airline`` 플러그인과 IDE와 비슷하게 문법 오류를 체크해주는 ``vim-syntastic`` 플러그인을 포함합니다.
 
-{{<highlight shell>}}
+```shell
 set nocompatible
 set number
 filetype off
@@ -149,7 +149,7 @@ let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
-{{</highlight>}}
+```
 
 설정을 추가했다면 ``vim`` 을 실행한 뒤, ``:PluginInstall`` 명령어를 입력해 플러그인 설치를 완료합니다.
 
@@ -159,13 +159,13 @@ let g:syntastic_check_on_wq = 0
 
 **Apache2 / PHP7**: 간단한 시스템 정보를 서비스하기 위해 사용합니다.
 
-{{<highlight shell>}}
+```shell
 sudo apt install apache2
 
 sudo add-apt-repository ppa:ondrej/php
 sudo apt update
 sudo apt install php7.4
-{{</highlight>}}
+```
 
 **CUDA**: *Nvidia 그래픽 카드가 설치된 시스템에 설치해야 합니다.*
 
@@ -173,9 +173,9 @@ sudo apt install php7.4
 
 **HUGO**: 블로그 포스트를 작성하고 확인하기 위해 사용합니다.
 
-{{<highlight shell>}}
+```shell
 sudo apt install hugo
-{{</highlight>}}
+```
 
 ## Programming {#programming}
 
@@ -187,75 +187,75 @@ sudo apt install hugo
 
 **FileZilla**: 사실 기본 내장된 ``nautilus`` 에서도 sftp와 ftp를 지원하지만, 아무튼 설치합니다.
 
-{{<highlight shell>}}
+```shell
 sudo apt install filezilla
-{{</highlight>}}
+```
 
 **WireShark**: 패킷을 잡아서 보여주는 앱입니다. ``WireShark`` 만큼 최적화가 잘 된 앱을 본 적이 없습니다. ``WireShark`` 를 설치하고 sudo로 실행하지 않아도 패킷을 잡을 수 있도록 sudo권한을 부여합니다. 당연하겠지만 **절대 서버/공용 환경에서 따라 하시면 안 됩니다.**
 
-{{<highlight shell>}}
+```shell
 sudo apt install wireshark
 sudo adduser $USER wireshark
-{{</highlight>}}
+```
 
 ## Graphics {#graphics}
 
 **GIMP**: 포토샵에 대응하는 적절한 오픈소스 이미지 편집 프로그램 입니다.
 
-{{<highlight shell>}}
+```shell
 sudo add-apt-repository ppa:otto-kesselgulasch/gimp
 sudo apt update
 sudo apt install gimp
-{{</highlight>}}
+```
 
 **Blender**: 적절한 3D 그래픽 툴 입니다.
 
-{{<highlight shell>}}
+```shell
 sudo add-apt-repository ppa:thomas-schiex/blender
 sudo apt update
 sudo apt install blender
-{{</highlight>}}
+```
 
 ## Office {#office}
 
 **Typora**: 깔끔한 Markdown Editor입니다. 
 
-{{<highlight shell>}}
+```shell
 wget -qO - https://typora.io/linux/public-key.asc | sudo apt-key add -
 sudo add-apt-repository 'deb https://typora.io/linux ./'
 sudo apt update
 sudo apt install typora
-{{</highlight>}}
+```
 
 **HUGO**: 정적 블로그 생성 툴 입니다.
 
-{{<highlight shell>}}ell
+```shellell
 sudo apt install hugo
-{{</highlight>}}
+```
 
 ## Sound/Video {#sound-and-video}
 
 **VLC Player**: 적절한 오픈소스 미디어 플레이어 입니다.
 
-{{<highlight shell>}}
+```shell
 sudo snap install vlc
-{{</highlight>}}
+```
 
 ## Etc {#etc}
 
-{{<highlight shell>}}
+```shell
 sudo apt install screenfetch # 시스템 정보와 적절한 로고를 터미널에 띄워 줍니다.
 sudo apt install nvidia-smi # Nvidia 그래픽 카드를 사용하고 있다면, 그래픽 카드의 상태를 띄워 줍니다.
-{{</highlight>}}
+```
 
 ## Shell Theme {#shell-theme}
 
 우선 ``~/.themes`` 폴더와 ``~/.icons`` 폴더를 생성해야 합니다.
 
-{{<highlight shell>}}
+```shell
 mkdir ~/.themes
 mkdir ~/.icons
-{{</highlight>}}
+```
 
 **Sierra-dark-solid**: OSX Sierra의 디자인을 어느 정도 채용한 GTK3 테마입니다. https://www.gnome-look.org/p/1013714/ 에서 다운로드 후 ``~/.themes`` 폴더에 압축 해제해 설치 합니다.
 
