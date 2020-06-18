@@ -20,6 +20,7 @@ pre {
   border: 0px;
 }
 
+
 @media(prefers-color-scheme:dark) {
 
 code,
@@ -36,5 +37,10 @@ pre {
   background-color: #0f0f04;
 }
 
+mark,
+::selection {
+  color: #ffdddd;
+}
 
 }
+
