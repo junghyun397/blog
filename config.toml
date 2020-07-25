@@ -51,14 +51,6 @@ showTags = true
 # custom navigation items
 
 [[params.nav.custom]]
-title = "Categories"
-url = "/categories"
-
-[[params.nav.custom]]
-title = "Tgas"
-url = "/tags"
-
-[[params.nav.custom]]
 title = "About"
 url = "/about"
 

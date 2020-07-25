@@ -34,9 +34,19 @@ sudo apt install gnome-shell-extensions
 
 **Remap Control <-> CapsLock**: CapsLock 키의 위치는 적폐입니다. 그리 좋은 자리가 Control이 아니라 잘 쓰지도 않는 Caps키라니요. ``tweaks`` > ``Keyboard&Mouse`` > ``Keyboard`` > ``Additional Layout Options`` > ``Ctrl position`` > ``Swap Ctrl and Cpas Lock`` 을 활성화하여 청산합니다.
 
-**Dash-to-dock**: 왼쪽으로 정렬되는 Ubuntu Dock를 Dash 스타일로 바꿔주는 Extension입니다. Ubuntu Software에 ``dash to dock`` 키워드로 검색 후 설치합니다. ``Dock size limit`` 를 ``90%`` , ``Icon size limit`` 를 ``32px`` 로 설정합니다.
+**Dash-to-dock**: 왼쪽으로 정렬되는 Ubuntu Dock를 Dash 스타일로 바꿔주는 Extension입니다. 
 
-**GSconnect**: KDE 에서 제공하는 모바일-PC 연결 기능인 ``KDE Connect`` 를 GNOME 에서도 사용할 수 있게 해줍니다. [apt://gnome-shell-extension-gsconnect](apt://gnome-shell-extension-gsconnect)링크를 타고 들어가 설치를 진행합니다.
+```shell
+mkdir /tmp/dash-to-dock
+cd /tmp/dash-to-dock
+git clone https://github.com/micheleg/dash-to-dock.git
+make
+make install
+```
+
+설치 이후 ``Shrink the dash`` 활성화, ``Dock size limit``  ``90%`` , ``Icon size limit`` 를 ``40px`` 로 설정합니다.
+
+**KDE Connect**: KDE 에서 제공하는 모바일-PC 연결 기능인 ``KDE Connect`` 를 GNOME 에서도 사용할 수 있게 해줍니다.
 
 ## Keyboard Input - 한글 {#keyboard-input-hangul}
 
@@ -167,10 +177,6 @@ sudo apt update
 sudo apt install php7.4
 ```
 
-**CUDA**: *Nvidia 그래픽 카드가 설치된 시스템에 설치해야 합니다.*
-
-**CuDNN**: *Nvidia 그래픽 카드가 설치된 시스템에 설치해야 합니다.*
-
 **HUGO**: 블로그 포스트를 작성하고 확인하기 위해 사용합니다.
 
 ```shell
@@ -245,7 +251,7 @@ sudo snap install vlc
 
 ```shell
 sudo apt install screenfetch # 시스템 정보와 적절한 로고를 터미널에 띄워 줍니다.
-sudo apt install nvidia-smi # Nvidia 그래픽 카드를 사용하고 있다면, 그래픽 카드의 상태를 띄워 줍니다.
+sudo ubuntu-drivers autoinstall # 하드웨어 드라이버를 업데이트 합니다.
 ```
 
 ## Shell Theme {#shell-theme}
