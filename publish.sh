@@ -1,8 +1,6 @@
 #!/bin/bash
 
-echo -e "-------------------------------------------------"
-echo -e "[i] start upload changes to github..."
-echo -e "-------------------------------------------------"
+echo -e ">>> start upload markdown to github..."
 
 hugo -D
 
@@ -17,17 +15,15 @@ git commit -m "$msg"
 
 git pull --rebase origin master
 
-echo -e "-------------------------------------------------"
-echo -e "[+] start upload changes; settings and document..."
-echo -e "-------------------------------------------------"
+echo -e ">>> push markdown to github..."
 
 git push origin master
 
-echo -e "-------------------------------------------------"
-echo -e "[o] succeed upload settings and documnent changes"
-echo -e "-------------------------------------------------"
+echo -e ">>> succeed upload markdown to github."
 
 cd ..
+
+echo -e ">>> start upload markup to github-pages..."
 
 git add .
 
@@ -39,13 +35,9 @@ git commit -m "$msg"
 
 git pull --rebase origin master
 
-echo -e "-------------------------------------------------"
-echo -e "[+] start upload changes; static pages"
-echo -e "-------------------------------------------------"
+echo -e ">>> push markup to github-pages..."
 
 git push origin master
 
-echo -e "-------------------------------------------------"
-echo -e "[o] succeed upload static pages; end."
-echo -e "-------------------------------------------------"
+echo -e ">> succeed upload markup to github."
 
