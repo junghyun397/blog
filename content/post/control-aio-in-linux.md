@@ -45,11 +45,11 @@ Options:
 		Channel: <led number> :설정할 LED채널을 선택합니다. 1 또는 2를 적으세요.
 		Mode:
 			 0 - 정적
-			 1 - 깜빡임 (Only Commander Pro and Asetek Pro)
-			 2 - 색 박동 (Only Commander Pro and Asetek Pro)
-			 3 - 색 변화 (Only Commander Pro and Asetek Pro)
-			 4 - 무지개 (Only Commander Pro and Asetek Pro)
-			 5 - 온도 (Only Commander Pro, Asetek, and Asetek Pro)
+			 1 - 깜빡임 (커맨더 프로 또는 아세텍 프로와 호혼)
+			 2 - 색 박동 (커맨더 프로 또는 아세텍 프로와 호혼)
+			 3 - 색 변화 (커맨더 프로 또는 아세텍 프로와 호혼)
+			 4 - 무지개 (커맨더 프로 또는 아세텍 프로와 호혼)
+			 5 - 온도 (커맨더 프로 또는 아세텍, 아세텍 프로와 호혼)
 		Colors: <HTML Color Code>			:Define Color for LED.
 		Warn: <HTML Color Code>		:Define Color for Warning Temp.
 		Temps: <Temperature in Celsius>	:Define Warning Temperatures.
@@ -58,8 +58,8 @@ Options:
 	--fan channel=N,mode=N,pwm=PWM,rpm=RPM,temps=TEMP:TEMP:TEMP,speeds=SPEED:SPEED:SPEED
 		Channel: <fan number> :Selects a fan to setup. Accepted values are 1, 2, 3 or 4.
 		Modes:
-			 0 - 고정 PWM (requires to specify the PWM)
-			 1 - 고정 RPM (requires to specify the RPM)
+			 0 - 고정 PWM (PWM 지정 필요)
+			 1 - 고정 RPM (RPM 지정 필요)
 			 2 - 기본
 			 3 - 정죽
 			 4 - 균형
@@ -86,4 +86,16 @@ sudo ./OpenCorsairLink.elf --device 0 --led channel=1,mode=0,colors=1500ff --fan
 ```
 
 적당히 쉘 스크립트로 만들어서 ``crontab`` 에 등록 하거나 해서 활용 하면 되겠습니다. ``Corsair H100i v2``와 ``Corsair H100i PRO RGB``에서 정상 작동을 확인 했습니다.
+
+```sh
+@reboot YOUR-PATH/ConfigureAIO.sh
+```
+
+- ``crontab``에 ``@reboot``로 등록한  task는 ``suspend``와 같은 ``stand-by-mode``상태 이후에 자동으로 실행되지 않습니다. ``.bashrc``나 ``.zshrc``에 PATH를 등록해서 수동으로 스크립트를 실행해 줘야 합니다.
+
+```sh
+export PATH="$PATH:YOUR-PATH"
+```
+
+
 
