@@ -19,7 +19,7 @@ googleAnalytics = "UA-158778546-1"
 
 [markup.highlight]
 codeFences = true
-noClasses = false
+noClasses = true
 
 [markup.goldmark.renderer]
 unsafe = true
