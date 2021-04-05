@@ -11,10 +11,10 @@ tags = ["ubuntu", "gnome"]
 ``우분투 20.04 장기 지원 버전(LTS)`` 이 릴리스 되었습니다. 매번 OS를 새로 설치할 때마다 삽질하지 않도록 우분투를 처음 설치했을 때 작업 환경을 세팅하는 과정을 글로 정리해 봤습니다. ``Pop! shell`` 및 ``ifcitx-hangul`` 설정과 ``uim-byeoru`` 설정, ``oh-my-zsh`` 설정과 ``vundle`` 등의 설정을 포함합니다.
 
 * 개인적으로 사용하기 위해 정리한 성격이 강한 글입니다.
-* 최소한 ``22.04 LTS``가 나오기 전까지는 계속 업데이트될 예정입니다.
+* 최소한 ``22.04 LTS``가 나오기 전까지는 계속 업데이트 될 예정입니다.
 * ``Ubuntu 20.04 LTS``, 영문 기준으로 작성되었으며, ``RYZEN 1700 + GTX1080 + NVMe SSD `` 데스크톱과 ``DELL XPS 13 9350`` 랩톱 하드웨어에서 정상 작동을 확인했습니다.
 
-본격적으로 환경을 구성하기 전에,  여러가지 도구들을 설치해 줘야 합니다. 취향껏 골라 설치하면 되겠습니다.
+본격적으로 환경을 구성하기 전에,  여러 가지 도구들을 설치해 줘야 합니다. 취향껏 골라 설치하면 되겠습니다.
 
 ```shell
 sudo apt update && sudo apt upgrade
@@ -69,7 +69,7 @@ GNOME Shell을 완전히 설정하기 위해, ``Tweaks`` 앱에서 다음 설정
 	1. Control <-> CapsLock 위치 변경: CapsLock 키의 위치는 적폐입니다. 그리 좋은 자리가 Control이 아니라 잘 쓰지도 않는 Caps키라니요. ``tweaks`` > ``Keyboard&Mouse`` > ``Keyboard`` > ``Additional Layout Options`` > ``Ctrl position`` > ``Swap Ctrl and Cpas Lock`` 을 활성화하여 청산합니다.
 	2. Compose Key 지정: 한글 키 또는 멀티 키가 포함되지 않는 키보드를 사용하고 있다면, 한글-영문 전환 키로 활용할 ``Compose Key`` 를 지정해야 합니다. 일반적으로 ``Alt_R`` 을 사용합니다.
 2. ``Workspaces`` 에서 다음 설정을 변경해야 합니다.
-   1. 정적 워크스페이스 설정: ``Static workspaces`` 를 선택해 정적 워크스페이스를 활성화 합니다.
+   1. 정적 워크스페이스 설정: ``Static workspaces`` 를 선택해 정적 워크스페이스를 활성화합니다.
 
 ### Shell Extension
 
@@ -77,16 +77,16 @@ GNOME Shell에 추가 기능을 설치하고 추가 기능을 구성하기 위�
 
 기본으로 제공되는 추가기능들을 비활성화/활성화 하기 위해 ``Extensions`` 앱에서 추가 기능 활성화를 설정해야 합니다. 
 
-1. 앱 메뉴를 비활성화 하기 위해 ``Applications Menu`` 를 ``disable`` 로 설정합니다.
-2. 바탕화면 아이콘을 비활성화 하기 위해 ``Desktop-icons`` 을 ``disable`` 로 설정합니다.
-3. Ubuntu Dock를 비활성화 하기 위해 ``Ubuntu Dock`` 을 ``disable`` 로 설정합니다.
-4. 워크스페이스 표시기를 활성화 하기 위해 ``Workspace Indicator`` 를 ``enable`` 로 설정합니다.
+1. 앱 메뉴를 비활성화하기 위해 ``Applications Menu`` 를 ``disable`` 로 설정합니다.
+2. 바탕화면 아이콘을 비활성화하기 위해 ``Desktop-icons`` 을 ``disable`` 로 설정합니다.
+3. Ubuntu Dock를 비활성화하기 위해 ``Ubuntu Dock`` 을 ``disable`` 로 설정합니다.
+4. 워크스페이스 표시기를 활성화하기 위해 ``Workspace Indicator`` 를 ``enable`` 로 설정합니다.
 
 이후, 다음 ``Shell Extension``들을 웹 페이지에서 활성화 클릭 또는 컴파일하여 설치합니다.
 
 #### Pop! Shell
 
-키보드 활용도를 더욱 높여주며, ``i3wm`` 과 비슷한 타일링을 가능하게 만들어 주는 Extension인 ``Pop! Shell``입니다. 자세한 설명은 [이 링크](https://github.com/pop-os/shell)를 참조 해주세요. ``Pop! Shell`` github 저장소를 클론한 뒤 컴파일 및 설치합니다. **설치 시 단축키들이 변경됨으로, 주의해서 설치해주세요.**
+키보드 활용도를 더욱 높여주며, ``i3wm`` 과 비슷한 타일링을 가능하게 만들어 주는 Extension인 ``Pop! Shell``입니다. 자세한 설명은 [이 링크](https://github.com/pop-os/shell)를 참조해 주세요. ``Pop! Shell`` github 저장소를 클론한 뒤 컴파일 및 설치합니다. **설치 시 단축키들이 변경됨으로, 주의해서 설치해주세요.**
 
 ```sh
 cd /tmp
@@ -97,17 +97,17 @@ make local-install
 
 #### GSConnect
 
-https://extensions.gnome.org/extension/1319/gsconnect/ 에서 활성화 할 수 있습니다.
+https://extensions.gnome.org/extension/1319/gsconnect/ 에서 활성화할 수 있습니다.
 
-KDE의 모바일 기기 연결 서비스인 ``KDE Connect`` 의 JavaScript 구현체입니다. 배터리 및 알림, 클립보드 동기화와 파일시스템 마운트 기능을 지원합니다.
+KDE의 모바일 기기 연결 서비스인 ``KDE Connect`` 의 JavaScript 구현 버전입니다. 배터리 및 알림, 클립보드 동기화와 파일시스템 마운트 기능을 지원합니다.
 
 #### Unite
 
-https://extensions.gnome.org/extension/1287/unite/  에서 활성화 할 수 있습니다.
+https://extensions.gnome.org/extension/1287/unite/  에서 활성화할 수 있습니다.
 
-타이틀 바 제거, 앱 메뉴 제거, 윈도우 버튼 위치 변경 등 GNOME 의 여러 요소를 커스터마이징 할 수 있는 확장 앱 입니다.
+타이틀 바 제거, 앱 메뉴 제거, 윈도우 버튼 위치 변경 등 GNOME 의 여러 요소를 커스터마이징 할 수 있는 확장 앱입니다.
 
-1. Activites 영역을 비활성화 하기 위해 ``Hide activities button`` 을 ``always`` 로 설정합니다.
+1. Activites 영역을 비활성화하기 위해 ``Hide activities button`` 을 ``always`` 로 설정합니다.
 2. 타이틀 바를 숨기기 위해 ``Hide Window titlebars`` 을 ``always`` 로 설정합니다.
 3. 윈도우 타이틀을 앱 메뉴에 표시하기 위해 ``Show window title in app menu`` 을 ``always`` 로 설정합니다.
 4. 윈도우 버튼을 상단 바에 표시하기 위해 ``Show window buttons in top bar`` 을 ``always`` 로 설정합니다.
@@ -122,7 +122,7 @@ gsettings set org.gnome.Terminal.Legacy.Settings headerbar false
 
 #### Block-Caribou
 
-https://extensions.gnome.org/extension/3222/block-caribou-36/ 에서 활성화 할 수 있습니다.
+https://extensions.gnome.org/extension/3222/block-caribou-36/ 에서 활성화할 수 있습니다.
 
 터치스크린 환경에서 가상 키보드 비활성화 기능이 작동하지 않는 버그를 해결 해줍니다. 가상 키보드 관련 문제가 있다면 설치하면 됩니다.
 
@@ -151,7 +151,7 @@ sudo apt install fcitx-hangul
 
 ## Vim{#vim}
 
-**Vundle/airline/syntastics** ``vim`` 을 위한 플러그인 관리 툴과 UI개선 플러그인, 문법 체크 플러그인입니다. 우선``~/.vim/bundle/Vundle.vim``폴더에 ``Vundle`` 을 클론 해줍니다.
+**Vundle/airline/syntastics** ``vim`` 을 위한 플러그인 관리 툴과 UI개선 플러그인, 문법 검증 플러그인입니다. 우선``~/.vim/bundle/Vundle.vim``폴더에 ``Vundle`` 을 클론 해줍니다.
 
 ```shell
 git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
@@ -255,7 +255,7 @@ export PATH="$PATH:$HOME/.flutter/flutter/bin"
 export PATH="$PATH:$JAVA_HOME/bin:$ANDROID_HOME/commandline-tools/bin:$ANDROID_HOME/platform-tools"
 ```
 
-추가된 내용을 ``source .zshrc`` 명령어로 업데이트 한 뒤, ``sdkmanager`` 를 이용해 안드로이드 SDK 를 다운로드 받습니다.
+추가된 내용을 ``source .zshrc`` 명령어로 업데이트한 뒤, ``sdkmanager`` 를 이용해 안드로이드 SDK 를 다운로드 받습니다.
 
 ```shell
 sdkmanager --sdk_root=$ANDROID_HOME "platform-tools" "platforms;android-29" "platforms;android-30" "build-tools;28.0.3"
@@ -402,7 +402,7 @@ Windows는 메인보드에 저장된 시간을 현지 시간으로, 리눅스는
 
 ### 듀얼모니터
 
-GNOME Shell은 모니터별로 배경화면을 할당하는 기능일 제공하지 않습니다. 듀얼모니터에 서로 다른 배경화면을 설정하기 위해서는 가로로 합쳐진 이미지를 배경으로 설정한 뒤, 배경 표시 옵션을 ``spanned`` 로 설정해야 합니다.
+GNOME Shell은 모니터별로 배경화면을 할당하는 기능을 제공하지 않습니다. 듀얼모니터에 서로 다른 배경화면을 설정하기 위해서는 가로로 합쳐진 이미지를 배경으로 설정한 뒤, 배경 표시 옵션을 ``spanned`` 로 설정해야 합니다.
 
 ```shell
 gsettings set org.gnome.desktop.background picture-options spanned
