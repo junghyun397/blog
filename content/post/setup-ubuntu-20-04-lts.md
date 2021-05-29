@@ -29,7 +29,7 @@ sudo apt install cargo gdebi python3-pip ppa-purge
 sudo apt install openssh-server git curl screen net-tools pm-utils
 
 # 모니터링 도구
-sudo apt install screenfetch htop tree
+sudo apt install tldr screenfetch htop tree
 
 # GNOME 추가 기능
 sudo apt install gnome-tweak-tool gnome-shell-extensions nitrogen
@@ -251,8 +251,7 @@ ANDROID_HOME="$HOME/.android"
 export JAVA_HOME
 export ANDROID_HOME
 
-export PATH="$PATH:$HOME/.flutter/flutter/bin"
-export PATH="$PATH:$JAVA_HOME/bin:$ANDROID_HOME/commandline-tools/bin:$ANDROID_HOME/platform-tools"
+export PATH="$PATH:$JAVA_HOME/bin:$ANDROID_HOME/cmdline-tools/bin:$ANDROID_HOME/platform-tools"
 ```
 
 추가된 내용을 ``source .zshrc`` 명령어로 업데이트한 뒤, ``sdkmanager`` 를 이용해 안드로이드 SDK 를 다운로드 받습니다.
@@ -273,7 +272,7 @@ git clone https://github.com/flutter/flutter.git -b stable --depth 1
 ``.zshrc`` 아래에 다음 내용을 추가합니다.
 
 ```shell
-export PATH="$PATH:`pwd`/flutter/bin"
+export PATH="$PATH:$HOME/.flutter/flutter/bin"
 ```
 
 추가된 내용을 ``source .zshrc`` 명령어로 업데이트 한 뒤, Flutter 바이너리를 다운로드 받아 ``flutter doctor`` 를 실행해 정상 설치를 확인합니다.
@@ -328,6 +327,8 @@ wget -O ~/Downloads/discord.deb "https://discordapp.com/api/download?platform=li
 sudo gdebi ~/Downloads/discord.deb
 ```
 
+수동 다운로드를 상당히 자주 요구하기에, 스크립트로 만들어 놓으면 더 좋습니다.
+
 ### Spotify
 
 ```shell
@@ -339,7 +340,7 @@ sudo apt update && sudo apt install spotify-client
 
 ### WireShark
 
-sudo로 실행하지 않아도 패킷을 잡을 수 있도록 sudo권한을 부여합니다. 당연하겠지만 **절대 서버/공용 환경에서 따라 하시면 안 됩니다.**
+sudo로 실행하지 않아도 패킷을 잡을 수 있도록 sudo권한을 부여합니다. 당연하겠지만 **절대 서버/공용 환경에서 따라 하면 안 됩니다.**
 
 ```shell
 sudo apt install wireshark
@@ -387,6 +388,22 @@ Windows는 메인보드에 저장된 시간을 현지 시간으로, 리눅스는
 ```
 
 이후 우클릭으로 새 ``32bit`` ``DWORD`` 값을 만들고, 이름을 ``RealTimeIsUniversal`` 로 고칩니다. 만든 값을 더블클릭해 값을 ``1``로 지정한 뒤 저장합니다.
+
+## 조금은 유용할 정보들 {#etc}
+
+### Inbound RST 패킷 차단
+
+```shell
+sudo iptables -I INPUT -p tcp --tcp-flags ALL RST -j DROP
+```
+
+### TTL 변경
+
+``/etc/sysctl.conf`` 아래에 다음 내용을 추가합니다.
+
+```shell
+net.ipv4.ip_default_ttl=42
+```
 
 ## 배경화면 {#wallpaper}
 
