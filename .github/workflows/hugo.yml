@@ -1,0 +1,28 @@
+name: CI
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+      - uses: peaceiris/actions-hugo@v2
+      - name: "HUGO build"
+        run: hugo -D
+      - name: "Git configuration"
+        run: |
+          git config user.name github-actions
+          git config user.email github-actions@github.com
+      - name: "Push to repository"
+        run: |
+          git add .
+          git commit -m "rebuilding site `date`"
+          git pull --rebase origin master
+          git push origin master
+        working-directory: public
