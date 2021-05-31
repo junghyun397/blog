@@ -12,6 +12,8 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
+        with:
+          submodules: "recursive"
       - uses: peaceiris/actions-hugo@v2
       - name: "HUGO build"
         run: hugo -D
@@ -19,8 +21,6 @@ jobs:
         run: |
           git config user.name github-actions
           git config user.email github-actions@github.com
-      - name: "Update submodules"
-        run: git submodule update
       - name: "Push to repository"
         run: |
           git add .
