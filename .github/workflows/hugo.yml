@@ -18,6 +18,7 @@ jobs:
       - uses: shimataro/ssh-key-action@v2
         with:
           key: ${{ secrets.GH_ACTIONS_PRIVATE_KEY }}
+          known_hosts: "no"
       - name: "HUGO build"
         run: hugo -D
       - name: "Git configuration"
