@@ -27,8 +27,10 @@ jobs:
           git config user.email github-actions@github.com
       - name: "Push to repository"
         run: |
+          git config user.name github-actions
+          git config user.email github-actions@github.com
           git add .
           git commit -m "rebuilding site `date`"
           git pull --rebase origin master
           git push origin master
-        working-directory: public
+        working-directory: "public"
