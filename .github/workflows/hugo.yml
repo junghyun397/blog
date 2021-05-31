@@ -25,7 +25,7 @@ jobs:
           git add .
           git commit -m "rebuilding site `date`"
           git pull --rebase origin master
-          git push https://github-actions:$ACTIONS_TOKEN@github.com/junghyun397/junghyun397.github.io.git origin master
+          git push https://github-actions:$ACTIONS_TOKEN@github.com/junghyun397/junghyun397.github.io.git
         working-directory: "public"
         env:
           ACTIONS_TOKEN: ${{secrets.ACTIONS_TOKEN}}
