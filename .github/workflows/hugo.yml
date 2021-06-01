@@ -21,13 +21,12 @@ jobs:
         run: hugo -D
       - name: Push to repository
         run: |
-          git config rerere.enabled 1
           git config user.name github-actions[bot]
           git config user.email 41898282+github-actions[bot]@users.noreply.github.com
           git add .
           git commit -m "rebuilding site `date`"
           git pull --rebase origin master
-          git push https://github-actions[bot]:$ACTIONS_TOKEN@github.com/$REPO_OWNER/$REPO_OWNER.github.io.git "HEAD:refs/heads/main"
+          git push https://github-actions[bot]:$ACTIONS_TOKEN@github.com/$REPO_OWNER/$REPO_OWNER.github.io.git "HEAD:refs/heads/master"
         env:
           REPO_OWNER: ${{github.repository_owner}}
           ACTIONS_TOKEN: ${{secrets.ACTIONS_TOKEN}}
