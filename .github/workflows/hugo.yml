@@ -27,7 +27,7 @@ jobs:
           git add .
           git commit -m "rebuilding site `date`"
           git pull --rebase origin master
-          git push https://github-actions[bot]:$ACTIONS_TOKEN@github.com/$REPO_OWNER/$REPO_OWNER.github.io.git "HEAD:refs/heads/master"
+          git push https://github-actions[bot]:$ACTIONS_TOKEN@github.com/$REPO_OWNER/$REPO_OWNER.github.io.git "HEAD:refs/heads/main"
         env:
           REPO_OWNER: ${{github.repository_owner}}
           ACTIONS_TOKEN: ${{secrets.ACTIONS_TOKEN}}
