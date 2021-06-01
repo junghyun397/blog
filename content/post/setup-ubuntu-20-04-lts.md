@@ -22,7 +22,7 @@ sudo apt update && sudo apt upgrade
 # 빌드 도구
 sudo apt install build-essential make cmake clang node-typescript libdbus-1-dev libssl-dev
 
-# 설치 도구
+# 패키지 도구
 sudo apt install cargo gdebi python3-pip ppa-purge
 
 # 관리 도구
@@ -32,10 +32,13 @@ sudo apt install openssh-server git curl screen net-tools pm-utils
 sudo apt install tldr screenfetch htop tree
 
 # GNOME 추가 기능
-sudo apt install gnome-tweak-tool gnome-shell-extensions nitrogen
+sudo apt install gnome-tweak-tool gnome-shell-extensions
 
 # 편집기 및 입력기
 sudo apt install vim uim uim-byeoru
+
+# 한 줄로 모두 설치하기
+sudo apt update && sudo apt upgrade && sudo apt install build-essential make cmake clang node-typescript libdbus-1-dev libssl-dev cargo gdebi python3-pip ppa-purge openssh-server git curl screen net-tools pm-utils tldr screenfetch htop tree gnome-tweak-tool gnome-shell-extensions vim uim uim-byeoru 
 ```
 
 ## Zsh Shell{#zsh-shell}
