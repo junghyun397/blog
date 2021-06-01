@@ -1,3 +1,10 @@
 [submodule "themes/hugo-notepadium"]
 	path = themes/hugo-notepadium
 	url = https://github.com/cntrump/hugo-notepadium.git
+[submodule "junghyun397.github.io"]
+	path = public
+	url = https://github.com/junghyun397/junghyun397.github.io.git
+[submodule "public"]
+	path = public
+	url = https://github.com/junghyun397/junghyun397.github.io.git
+	branch = master
