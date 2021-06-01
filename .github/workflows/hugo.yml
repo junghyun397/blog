@@ -25,7 +25,7 @@ jobs:
           git config user.email 41898282+github-actions[bot]@users.noreply.github.com
           git add -A
           git commit -m "rebuilding site `date`"
-          git pull --rebase -X ours origin master
+          git pull --rebase -Xtheirs origin master
           git push https://github-actions[bot]:$ACTIONS_TOKEN@github.com/$REPO_OWNER/$REPO_OWNER.github.io.git "HEAD:refs/heads/master"
         env:
           REPO_OWNER: ${{github.repository_owner}}
