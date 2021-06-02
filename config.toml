@@ -40,7 +40,7 @@ enable = true
 use = "katex"
 
 [params.syntax]
-use = true
+use = "hljs"
 theme = "xcode"
 darkTheme = "xcode-dark"
 
