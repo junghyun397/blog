@@ -62,7 +62,7 @@ wget https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/insta
 git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
 ```
 
-이후 ``~/.zshrc``에서 ``ZSH_THEME="agnoster" ``와 ``plugins=(git zsh-syntax-highlighting)``을 설정한 뒤, ``source ~/.zshrc``를 입력해 적용합니다.
+이후 ``~/.zshrc``에서 ``ZSH_THEME="agnoster" ``와 ``plugins=(git zsh-syntax-highlighting docker docker-compse)``을 설정한 뒤, ``source ~/.zshrc``를 입력해 적용합니다.
 
 ## GNOME Shell{#gnome-shell}
 
@@ -219,6 +219,29 @@ ssh -T git@github.com
 ```
 
 ## SDKs
+
+## Docker
+
+```sh
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
+echo \         
+  "deb [arch=amd64 signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu \
+  $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+sudo apt update
+sudo apt install docker-ce docker-ce-cli
+```
+
+### Docker compose
+
+```sh
+sudo curl -L "https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+sudo ln -s /usr/local/bin/docker-compose /usr/bin/docker-compose
+sudo chmod +x /usr/local/bin/docker-compose
+
+sudo curl \
+    -L https://raw.githubusercontent.com/docker/compose/1.29.2/contrib/completion/bash/docker-compose \
+    -o /etc/bash_completion.d/docker-compose
+```
 
 ### JDK
 
