@@ -6,6 +6,7 @@ if [ $# -eq 1 ]
 fi
 
 cd public
+git reset --hard
 git pull origin matser
 cd ..
 

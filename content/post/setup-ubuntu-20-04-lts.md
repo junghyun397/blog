@@ -220,7 +220,7 @@ ssh -T git@github.com
 
 ## SDKs
 
-## Docker
+### Docker
 
 ```sh
 curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
@@ -231,7 +231,7 @@ sudo apt update
 sudo apt install docker-ce docker-ce-cli
 ```
 
-### Docker compose
+#### Docker compose
 
 ```sh
 sudo curl -L "https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
