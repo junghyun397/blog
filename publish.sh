@@ -1,5 +1,10 @@
 #!/bin/bash
 
+cd public
+git reset --hard HEAD
+git pull origin master
+cd ..
+
 msg="rebuilding site `date`"
 if [ $# -eq 1 ] 
   then msg="$1"
