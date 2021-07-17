@@ -35,10 +35,10 @@ sudo apt install tldr screenfetch htop tree
 sudo apt install gnome-tweak-tool gnome-shell-extensions
 
 # 편집기 및 입력기
-sudo apt install vim uim uim-byeoru
+sudo apt install vim-gtk3 uim uim-byeoru
 
 # 한 줄로 모두 설치하기
-sudo apt update && sudo apt upgrade && sudo apt install build-essential make cmake clang node-typescript libdbus-1-dev libssl-dev cargo gdebi python3-pip ppa-purge openssh-server git curl screen net-tools pm-utils tldr screenfetch htop tree gnome-tweak-tool gnome-shell-extensions vim uim uim-byeoru 
+sudo apt update && sudo apt upgrade && sudo apt install build-essential make cmake clang node-typescript libdbus-1-dev libssl-dev cargo gdebi python3-pip ppa-purge openssh-server git curl screen net-tools pm-utils tldr screenfetch htop tree gnome-tweak-tool gnome-shell-extensions vim-gtk3 uim uim-byeoru -y 
 ```
 
 ## Zsh Shell{#zsh-shell}
@@ -129,6 +129,22 @@ https://extensions.gnome.org/extension/3222/block-caribou-36/ 에서 활성화�
 
 터치스크린 환경에서 가상 키보드 비활성화 기능이 작동하지 않는 버그를 해결 해줍니다. 가상 키보드 관련 문제가 있다면 설치하면 됩니다.
 
+### Keyboard Shortcut
+
+``Settings`` > ``Keyboard Shortcuts`` 에서 키보드 단축키를 할당합니다.
+
+1. ``Launch calcutator`` > ``Super + C``
+2. ``Chrome incognito`` > ``Shift + Super + B``, ``google-chrome --incognito``
+3. ``Switch to workspace N`` > ``Super+N``
+
+#### Remove hot-keys
+
+``i3wm`` 스타일 워크스페이스를 선택하기 위해 ``Super+Num`` 단축키 할당을 해제할 필요가 있습니다. gssetting를 이용해 수동으로 dash-to-dock의 ``hot-keys`` 설정을 비활성화 합니다.
+
+```shell
+gsettings set org.gnome.shell.extensions.dash-to-dock hot-keys false
+for i in $(seq 1 9); do gsettings set org.gnome.shell.keybindings switch-to-application-${i} "[]"; done
+```
 
 ## 한글 입력 {#hangul-input}
 
@@ -160,12 +176,14 @@ sudo apt install fcitx-hangul
 git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 ```
 
-이후 ``~/.vimrc`` 의 제일 위쪽에 아래 설정을 추가합니다. 이 설정은 미려한 Status-bar를 표시해주는 ``vim-airline`` 플러그인과 IDE와 비슷하게 문법 오류를 체크해주는 ``vim-syntastic`` 플러그인을 포함합니다.
+이후 ``~/.vimrc`` 의 제일 위쪽에 아래 설정을 추가합니다. 이 설정은 미려한 Status-bar를 표시해주는 ``vim-airline``  플러그인과 문법 오류를 표시해주는 ``vim-syntastic`` 플러그인, ``xclip`` 클립보드 연동 설정을 포함합니다.
 
 ```shell
 set nocompatible
 set number
 filetype off
+
+set clipboard=unnamedplus
 
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
