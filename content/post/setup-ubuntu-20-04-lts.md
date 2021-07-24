@@ -6,6 +6,7 @@ date = 2020-04-25T19:00:00+09:00
 description = "최근 릴리스 된 우분투 20.04 장기 지원 버전을 기준으로 설치 후 필요한 작업 환경 구성 과정을 정리해 봤습니다."
 categories = ["linux"]
 tags = ["ubuntu", "gnome"]
+
 +++
 
 ``우분투 20.04 장기 지원 버전(LTS)`` 이 릴리스 되었습니다. 매번 OS를 새로 설치할 때마다 삽질하지 않도록 우분투를 처음 설치했을 때 작업 환경을 세팅하는 과정을 글로 정리해 봤습니다. ``Pop! shell`` 및 ``ifcitx-hangul`` 설정과 ``uim-byeoru`` 설정, ``oh-my-zsh`` 설정과 ``vundle`` 등의 설정을 포함합니다.
@@ -117,7 +118,7 @@ https://extensions.gnome.org/extension/1287/unite/  에서 활성화할 수 있�
 5. 상단 바에 표시된 윈도우 버튼의 위치를 설정하기 위해 ``Top bar window buttons position`` 을 ``First`` 로 설정합니다.
 6. 상단 바에 표시된 윈도우 버튼의 테마를 설정하기 위해 ``Top bar window buttons theme`` 을 ``Prof-Gnome`` 로 설정합니다.
 
-**Title bar 제거**: GNOME-Terminal 은 Unite 의 Title bar 제거 옵션이 먹히지 않습니다. gsetting을 이용해 수동으로 타이틀 바를 제거합니다.
+**Title bar 제거**: GNOME-Terminal 은 Unite 의 Title bar 제거 옵션이 먹히지 않습니다. ``gsetting`` 을 이용해 수동으로 타이틀 바를 제거합니다.
 
 ```sh
 gsettings set org.gnome.Terminal.Legacy.Settings headerbar false
@@ -131,15 +132,38 @@ https://extensions.gnome.org/extension/3222/block-caribou-36/ 에서 활성화�
 
 ### Keyboard Shortcut
 
-``Settings`` > ``Keyboard Shortcuts`` 에서 키보드 단축키를 할당합니다.
+``Settings`` > ``Keyboard Shortcuts`` 에서 런쳐 및 커스텀 단축키를 등록합니다.
 
 1. ``Launch calcutator`` > ``Super + C``
 2. ``Chrome incognito`` > ``Shift + Super + B``, ``google-chrome --incognito``
-3. ``Switch to workspace N`` > ``Super+N``
+
+이후 ``dconf`` 를 이용해 커스텀 키맵을 등록합니다.
+
+```shell
+vi /tmp/keybindings.dconf
+```
+
+```shell
+[/]
+move-to-monitor-left=['<Primary><Super>h', '<Primary><Super>Left']
+move-to-monitor-right=['<Primary><Super>l', '<Primary><Super>Right']
+move-to-workspace-1=['<Shift><Super>1']
+move-to-workspace-2=['<Shift><Super>2']
+move-to-workspace-3=['<Shift><Super>3']
+move-to-workspace-4=['<Shift><Super>4']
+switch-to-workspace-1=['<Super>1']
+switch-to-workspace-2=['<Super>2']
+switch-to-workspace-3=['<Super>3']
+switch-to-workspace-4=['<Super>4']
+```
+
+```shell
+dconf load '/org/gnome/desktop/wm/keybindings/' < /tmp/keybindings.dconf
+```
 
 #### Remove hot-keys
 
-``i3wm`` 스타일 워크스페이스를 선택하기 위해 ``Super+Num`` 단축키 할당을 해제할 필요가 있습니다. gssetting를 이용해 수동으로 dash-to-dock의 ``hot-keys`` 설정을 비활성화 합니다.
+``i3wm`` 스타일 워크스페이스 이동을 사용하기 위해 ``Super+Num`` 단축키 할당을 해제할 필요가 있습니다. ``gssetting`` 을 이용해 수동으로 ``dash-to-dock`` 의 ``hot-keys`` 설정을 비활성화 합니다.
 
 ```shell
 gsettings set org.gnome.shell.extensions.dash-to-dock hot-keys false
@@ -350,10 +374,23 @@ cd jetbrains-toolbox-*
 chmod 700 jetbrrains-toolbox
 ./jetbrains-toolbox
 ```
+### Wine 6.0
+
+```shell
+sudo dpkg --add-architecture i386
+sudo apt update
+
+sudo apt install software-properties-common
+sudo apt-add-repository "deb http://dl.winehq.org/wine-builds/ubuntu/ $(lsb_release -cs) main"
+
+sudo apt install --install-recommends winehq-stable
+```
+
 ### TeXLive
 
 ```shell
-sudo apt install texlive-latex-extra
+sudo apt install texlive-latex-recommended
+sudo apt install texlive-latex-recommended-doc
 ```
 
 ### Typora
