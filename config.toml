@@ -1,7 +1,7 @@
 baseURL = "https://do1ph.in"
 title = "junghyun397 Blog"
 theme = "hugo-notepadium"
-copyright = "©2020 junghyun397."
+copyright = "©2021 junghyun397."
 
 languageCode = "ko-kr"
 hasCJKLanguage = true
@@ -10,9 +10,6 @@ enableRobotsTXT = true
 
 pygmentsCodefences = true
 pygmentsStyle = "pygments"
-
-# Enable Disqus
-disqusShortname = "do1phin"
 
 # Google Analytics
 googleAnalytics = "UA-158778546-1"

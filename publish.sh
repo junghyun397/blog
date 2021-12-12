@@ -1,24 +1,34 @@
 #!/bin/bash
 
 msg="rebuilding site `date`"
-if [ $# -eq 1 ] 
-  then msg="$1"
+if [ $# -eq 2 ] 
+  then msg="$2"
 fi
 
-hugo -t
+hugo
 
-cd public
+if [[ ! "$1" == "-b" ]] || [[ ! "$1" == "--blog" ]] 
+then
 
-git add -A
-git commit -m "$msg"
+    cd public
 
-git pull --rebase origin master
-git push origin master
+    git add -A
+    git commit -m "$msg"
 
-cd ..
+    git pull --rebase origin master
+    git push origin master
 
-git add -A
-git commit -m "$msg"
+    cd ..
 
-git pull --rebase origin master
-git push origin master
+fi
+
+if [[ ! "$1" == "-p" ]] || [[ ! "$1" == "--post" ]] 
+then
+
+    git add -A
+    git commit -m "$msg"
+
+    git pull --rebase origin master
+    git push origin master
+
+fi
