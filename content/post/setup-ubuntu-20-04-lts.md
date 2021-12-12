@@ -32,14 +32,25 @@ sudo apt install openssh-server git curl screen net-tools pm-utils
 # 모니터링 도구
 sudo apt install tldr screenfetch htop tree
 
-# GNOME 추가 기능
-sudo apt install gnome-tweak-tool gnome-shell-extensions
+# X11/GNOME 추가 기능
+sudo apt install xdotool x11-xserver-utils gnome-tweak-tool gnome-shell-extensions
 
 # 편집기 및 입력기
 sudo apt install vim-gtk3 uim uim-byeoru
 
 # 한 줄로 모두 설치하기
-sudo apt update && sudo apt upgrade && sudo apt install build-essential make cmake clang node-typescript libdbus-1-dev libssl-dev cargo gdebi python3-pip ppa-purge openssh-server git curl screen net-tools pm-utils tldr screenfetch htop tree gnome-tweak-tool gnome-shell-extensions vim-gtk3 uim uim-byeoru -y 
+sudo apt update && sudo apt upgrade && sudo apt install build-essential make cmake clang node-typescript libdbus-1-dev libssl-dev cargo gdebi python3-pip ppa-purge openssh-server git curl screen net-tools pm-utils tldr screenfetch htop tree xdotool x11-xserver-utils gnome-tweak-tool gnome-shell-extensions vim-gtk3 uim uim-byeoru -y 
+```
+
+## Swap memory 추가
+
+```shell
+sudo swapoff /swapfile
+sudo rm /swapfile
+sudo dd if=/dev/zero of=/swapfile bs=1M count=32768
+sudo chmod 600 /swapfile
+sudo mkswap /swapfile
+sudo swapon /swapfile
 ```
 
 ## Zsh Shell{#zsh-shell}
@@ -64,6 +75,12 @@ git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:
 ```
 
 이후 ``~/.zshrc``에서 ``ZSH_THEME="agnoster" ``와 ``plugins=(git zsh-syntax-highlighting docker docker-compse)``을 설정한 뒤, ``source ~/.zshrc``를 입력해 적용합니다.
+
+```shell
+sed -i "s/ZSH_THEME=.*/ZSH_THEME='agnoster'/g" .zshrc
+sed -i "s/plugins=.*/plugins=(git zsh-syntax-highlighting docker docker-compse)/g" .zshrc
+source ~/.zshrc
+```
 
 ## GNOME Shell{#gnome-shell}
 
@@ -92,12 +109,13 @@ GNOME Shell에 추가 기능을 설치하고 추가 기능을 구성하기 위�
 
 키보드 활용도를 더욱 높여주며, ``i3wm`` 과 비슷한 타일링을 가능하게 만들어 주는 Extension인 ``Pop! Shell``입니다. 자세한 설명은 [이 링크](https://github.com/pop-os/shell)를 참조해 주세요. ``Pop! Shell`` github 저장소를 클론한 뒤 컴파일 및 설치합니다. **설치 시 단축키들이 변경됨으로, 주의해서 설치해주세요.**
 
-```sh
+```shell
 cd /tmp
 git clone https://github.com/pop-os/shell
 cd shell
 make local-install
 ```
+
 
 #### GSConnect
 
@@ -137,16 +155,11 @@ https://extensions.gnome.org/extension/3222/block-caribou-36/ 에서 활성화�
 1. ``Launch calcutator`` > ``Super + C``
 2. ``Chrome incognito`` > ``Shift + Super + B``, ``google-chrome --incognito``
 
-이후 ``dconf`` 를 이용해 커스텀 키맵을 등록합니다.
+이후 ``dconf`` 를 이용해 ``i3wm`` 스타일 워크스페이스 키맵을 등록합니다.
 
-```shell
-vi /tmp/keybindings.dconf
 ```
-
-```shell
+dconf load '/org/gnome/desktop/wm/keybindings/' < "
 [/]
-move-to-monitor-left=['<Primary><Super>h', '<Primary><Super>Left']
-move-to-monitor-right=['<Primary><Super>l', '<Primary><Super>Right']
 move-to-workspace-1=['<Shift><Super>1']
 move-to-workspace-2=['<Shift><Super>2']
 move-to-workspace-3=['<Shift><Super>3']
@@ -155,19 +168,57 @@ switch-to-workspace-1=['<Super>1']
 switch-to-workspace-2=['<Super>2']
 switch-to-workspace-3=['<Super>3']
 switch-to-workspace-4=['<Super>4']
+"
 ```
 
+``Altgr`` + ``hjkl`` 화살표 할당
+
 ```shell
-dconf load '/org/gnome/desktop/wm/keybindings/' < /tmp/keybindings.dconf
+echo "#!/bin/bash
+
+xmodmap -e 'keycode 108 = Mode_switch'
+xmodmap -e 'keycode 43 = h H Left H'
+xmodmap -e 'keycode 44 = j J Down J'
+xmodmap -e 'keycode 45 = k K Up K'
+xmodmap -e 'keycode 46 = l L Right L'" > ~/scripts/xmodmap.sh
+
+chmod +x ~/scripts/xmodmap.sh
+
+echo "[Desktop Entry]
+Type=Application
+Exec=$HOME/scripts/xmodmap.sh
+X-GNOME-Autostart-enabled=true
+Name=Xmodmap2
+Comment=" > ~/.config/autostart/xmodmap.desktop
+
+chmod +x ~/.config/autostart/xmodmap.desktop
 ```
 
 #### Remove hot-keys
 
-``i3wm`` 스타일 워크스페이스 이동을 사용하기 위해 ``Super+Num`` 단축키 할당을 해제할 필요가 있습니다. ``gssetting`` 을 이용해 수동으로 ``dash-to-dock`` 의 ``hot-keys`` 설정을 비활성화 합니다.
+``Super+Num`` 꼴의 단축키 사용을 위해서는 ``gssetting`` 을 이용해 수동으로 ``dash-to-dock`` 의 ``hot-keys`` 설정을 비활성화할 필요가 있습니다.
 
 ```shell
 gsettings set org.gnome.shell.extensions.dash-to-dock hot-keys false
 for i in $(seq 1 9); do gsettings set org.gnome.shell.keybindings switch-to-application-${i} "[]"; done
+```
+
+## Hibernate
+
+```shell
+sudo apt install hibernate
+```
+
+```
+sudo vi /etc/default/grub
+```
+
+```
+GRUB_CMDLINE_LINUX_DEFAULT="quiet splash resume=UUID=YOUR_VALUE"
+```
+
+```
+sudo update-grub
 ```
 
 ## 한글 입력 {#hangul-input}
@@ -189,7 +240,7 @@ sudo apt install fcitx-hangul
 1. ``Language Support`` > ``Keyboard input method system`` > ``uim`` 을 선택해 적용합니다.
 2. ``uim`` 에 진입하면 ``uim-pref-gtk`` UI 가 나옵니다. 여기서 ``Specify defuault IM`` 을 활성화한 뒤, ``Default Input Method`` 를 ``Byeoru`` 로 설정합니다.
 3. 좌측 메뉴에서 ``Byeoru key binding 1`` 을 선택해 ``[Byeoru] on`` 과 ``[Byeoru] off`` 에 ``Multi_key`` 를 인식시켜야 합니다. ``Grab...`` 을 눌렀을 때, ``Alt_key`` 가 잡힌다면 4번을 거쳐야 합니다. 정상적으로 ``Multi_key`` 가 인식된다면 5번으로 넘어 갑니다.
-4. ``Tweaks`` > ``Keyboard & Mouse`` > ``Compose Key`` 를 활성화해 ``Right Alt`` 를 선택해줍니다. 다시 3번으로 돌아가 오른쪽 Alt를 눌러 주면 ``Multi_key`` 로 인식이 될 것입니다.
+4. ``Tweaks`` > ``Keyboard & Mouse`` > ``Compose Key`` 를 활성화해 ``Right Ctlr`` 를 선택해줍니다. 다시 3번으로 돌아가 오른쪽 Alt를 눌러 주면 ``Multi_key`` 로 인식이 될 것입니다.
 5. ``Multi_key`` 를 인식해 ``ON/OFF`` 에 할당했다면, ``Apply`` 를 눌러 적용합니다. 적용되었다면 로그아웃 및 로그인 하여 오른쪽 아래에 uim ui가 뜨는지 확인합니다.
 
 ## Vim{#vim}
@@ -200,14 +251,13 @@ sudo apt install fcitx-hangul
 git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 ```
 
-이후 ``~/.vimrc`` 의 제일 위쪽에 아래 설정을 추가합니다. 이 설정은 미려한 Status-bar를 표시해주는 ``vim-airline``  플러그인과 문법 오류를 표시해주는 ``vim-syntastic`` 플러그인, ``xclip`` 클립보드 연동 설정을 포함합니다.
+이후 ``~/.vimrc`` 에 아래 설정을 추가합니다. 이 설정은 미려한 Status-bar를 표시해주는 ``vim-airline``  플러그인과 문법 오류를 표시해주는 ``vim-syntastic`` 플러그인, ``xclip`` 클립보드 연동 설정을 포함합니다.
 
 ```shell
-set nocompatible
+echo "set nocompatible
 set number
-filetype off
-
 set clipboard=unnamedplus
+filetype off 
 
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
@@ -218,46 +268,46 @@ Plugin 'tpope/vim-fugitive'
 Plugin 'git://git.wincent.com/command-t.git'
 Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
 
-"" vim-airline
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 let g:airline_powerline_fonts=1
 
-"" vim-syntastic
-Plugin 'scrooloose/syntastic'
+Plugin 'terryma/vim-expand-region'
 
 call vundle#end()
 filetype plugin indent on
-
-"" settings-syntastic
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
+" > ~/.vimrc
 ```
 
 설정을 추가했다면 ``vim`` 을 실행한 뒤, ``:PluginInstall`` 명령어를 입력해 플러그인 설치를 완료합니다.
 
+```shell
+echo '
+set scrolloff=5
+set incsearch
+set clipboard+=unnamed' > .ideavimrc
+```
+
 ## Github{#github}
 
 ```shell
-git config --global user.name "junghyun397"
-git config --global user.email "junghyun397@gmail.com"
+git config --global user.name "example"
+git config --global user.email "example@gmail.com"
 git config --global color.ui true
 git config --global core.editor vi
-
-ssh-keygen -t rsa -C "junghyun397@gmail.com"
-cat ~/.ssh/id_rsa.pub
 ```
 
-출력 된 ``id_rsa.pub`` 을 https://github.com/settings/keys 에 등록해 Github에 SSH 키 등록을 마칩니다. 이제 다음 명령어를 이용해 제대로 등록이 됐는지 확인해 볼 수 있습니다.
+```shell
+curl -fsSL https://cli.github.com/packages/githubcli-archive-keyring.gpg | sudo dd of=/usr/share/keyrings/githubcli-archive-keyring.gpg
+echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/githubcli-archive-keyring.gpg] https://cli.github.com/packages stable main" | sudo tee /etc/apt/sources.list.d/github-cli.list > /dev/null
+sudo apt update
+sudo apt install gh
+```
+
+https://github.com/settings/tokens
 
 ```shell
-ssh -T git@github.com
+gh auth
 ```
 
 ## SDKs
@@ -271,6 +321,9 @@ echo \
   $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
 sudo apt update
 sudo apt install docker-ce docker-ce-cli
+
+sudo groupadd docker
+sudo usermod -aG docker $USER
 ```
 
 #### Docker compose
@@ -460,7 +513,14 @@ sudo apt install virtualbox
 sudo apt install hugo
 ```
 
-## Windows - UTC TimeZone{#windows-utc}
+### bottom
+
+```shell
+curl -LO https://github.com/ClementTsang/bottom/releases/download/0.6.4/bottom_0.6.4_amd64.deb
+sudo dpkg -i bottom_0.6.4_amd64.deb
+```
+
+## Windows - UTC 타임존{#windows-utc}
 
 Windows는 메인보드에 저장된 시간을 현지 시간으로, 리눅스는 UTC 시간으로 해석합니다.  이를 해결하기 위해서는, 윈도우가 메인보드에 저장된 시간을 UTC로 해석하도록 설정 할 필요가 있습니다. 먼저, 시작 메뉴에서 ``regedit`` 를 타이핑해 레지스트리 편집기를 실행한 뒤, 아래의 경로를 복사해 붙여 넣습니다.
 
@@ -480,10 +540,8 @@ sudo iptables -I INPUT -p tcp --tcp-flags ALL RST -j DROP
 
 ### TTL 변경
 
-``/etc/sysctl.conf`` 아래에 다음 내용을 추가합니다.
-
 ```shell
-net.ipv4.ip_default_ttl=42
+echo "net.ipv4.ip_default_ttl=42" | sudo tee -a /etc/sysctl.conf
 ```
 
 ## 배경화면 {#wallpaper}
