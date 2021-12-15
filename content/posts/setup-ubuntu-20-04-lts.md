@@ -209,16 +209,34 @@ for i in $(seq 1 9); do gsettings set org.gnome.shell.keybindings switch-to-appl
 sudo apt install hibernate
 ```
 
-```
+```shell
 sudo vi /etc/default/grub
 ```
 
-```
+```shell
 GRUB_CMDLINE_LINUX_DEFAULT="quiet splash resume=UUID=YOUR_VALUE"
 ```
 
-```
+```shell
 sudo update-grub
+```
+
+## WOL
+
+```shell
+sudo apt install wakeonlan
+```
+
+```shell
+echo "[Unit]
+Description=Configure Wake On LAN
+
+[Service]
+Type=oneshot
+ExecStart=/sbin/ethtool -s enp5s0 wol g
+
+[Install]
+WantedBy=basic.target" | sudo tee /etc/systemd/system/wol.service
 ```
 
 ## 한글 입력 {#hangul-input}

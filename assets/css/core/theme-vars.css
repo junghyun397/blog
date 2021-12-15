@@ -1,7 +1,7 @@
 :root {
     --gap: 24px;
     --content-gap: 20px;
-    --nav-width: 800px;
+    --nav-width: 800px; /* Modified */
     --main-width: 720px;
     --header-height: 60px;
     --footer-height: 60px;

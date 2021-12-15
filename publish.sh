@@ -7,7 +7,7 @@ fi
 
 hugo
 
-if [[ ! "$1" == "-b" ]] || [[ ! "$1" == "--blog" ]] 
+if [[ ! "$1" == "-b" ]] && [[ ! "$1" == "--blog" ]] 
 then
     cd public
 
@@ -20,7 +20,7 @@ then
     cd ..
 fi
 
-if [[ ! "$1" == "-p" ]] || [[ ! "$1" == "--post" ]] 
+if [[ ! "$1" == "-p" ]] && [[ ! "$1" == "--post" ]] 
 then
     git add -A
     git commit -m "$msg"

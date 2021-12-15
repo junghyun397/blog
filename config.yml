@@ -34,12 +34,12 @@ params:
   ShowShareButtons: false 
   ShowPostNavLinks: true
   ShowCodeCopyButtons: true
-
+  
   profileMode:
     enabled: false
 
   homeInfoParams:
-    Content: Maybe JungHyeon Choi's Blog. 
+    Content: Maybe JungHyeon Choi's Blog.[*](https://do1ph.in/archives)
 
   socialIcons:
     - name: github
