@@ -50,7 +50,7 @@ params:
       url: "#"
 
   editPost:
-    URL: "https://github.com/junghyun397/blog/content"
+    URL: "https://github.com/junghyun397/blog/tree/master/content"
     Text: "뭔가 잘못된 것 같습니다." 
     appendFilePath: true 
     
