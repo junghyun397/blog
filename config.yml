@@ -1,0 +1,95 @@
+baseURL: 'https://do1ph.in'
+title: junghyun397 Blog
+pagenate: 3
+languageCode: ko
+defaultContentLanguage: ko
+enableInlineShortcodes: true
+theme: PaperMod
+
+enableRobotsTXT: true
+googleAnalytics: UA-158778546-1
+
+outputs:
+  home:
+      - HTML
+      - RSS
+      - JSON 
+          
+params:
+  env: production
+  description: Maybe JeongHyeon Choi's blog.
+  author: junghyun397
+  
+  SetThemeAuto: true
+  defaultTheme: auto
+
+  contentTypeName: posts
+
+  showtoc: true
+  tocopen: true
+
+  comments: true
+
+  ShowReadingTime: false
+  ShowShareButtons: false 
+  ShowPostNavLinks: true
+  ShowCodeCopyButtons: true
+
+  profileMode:
+    enabled: false
+
+  homeInfoParams:
+    Content: Maybe JungHyeon Choi's Blog. 
+
+  socialIcons:
+    - name: github
+      url: '#'
+    - name: linkedin
+      url: '#'
+    - name: email 
+      url: "#"
+
+  editPost:
+    URL: "https://github.com/junghyun397/blog/content"
+    Text: "뭔가 잘못된 것 같습니다." 
+    appendFilePath: true 
+    
+menu:
+  main:
+    - name: Search 
+      url: search/
+      weight: 3
+    - name: About
+      url: about/
+      weight: 4
+    - name: Tags
+      url: tags/
+      weight: 2
+    - name: Categories
+      url: categories/
+      weight: 1
+
+taxonomies:
+  category: categories
+  tag: tags
+
+privacy:
+  vimeo:
+    disabled: false
+    simple: true
+  twitter:
+    disabled: false
+    enableDNT: true
+    simple: true
+  instagram:
+    disabled: false
+    simple: true
+  youtube:
+    disabled: false
+    privacyEnhanced: true
+
+services:
+  instagram:
+    disableInlineCSS: true
+  twitter:
+    disableInlineCSS: true

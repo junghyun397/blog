@@ -1,0 +1,38 @@
+{{- $scratch := newScratch }}
+
+<ul class="nodot">
+    <li>
+        {{- if not .Date.IsZero -}}
+        {{- $scratch.Add "meta" (slice (.Date.Format (default "January 2, 2006" .Site.Params.DateFormat))) }}
+        {{- end }}
+
+        {{- if (.Param "ShowReadingTime") -}}
+        {{- $scratch.Add "meta" (slice (i18n "read_time" .ReadingTime | default (printf "%s min" .ReadingTime))) }}
+        {{- end }}
+
+        {{- with (partial "author.html" .) }}
+        {{- $scratch.Add "meta" (slice .) }}
+        {{- end }}
+
+        {{- with ($scratch.Get "meta") }}
+        {{- delimit . "&nbsp;·&nbsp;" -}}
+        {{- end -}}
+    </li>
+    <li>
+        <p class="labels">
+            {{- range .Params.categories -}}
+                {{- $category := replace . "#" "%23" -}}
+                {{- $category = replace $category "." "%2e" -}}
+                {{- $url := print "/categories/" ($category | urlize) "/" -}}
+                <a class="labels-category" href="{{- $url | relLangURL -}}">{{- . -}}</a>
+            {{- end -}}
+            {{- range .Params.tags -}}
+                {{- $tag := replace . "#" "%23" -}}
+                {{- $tag = replace $tag "." "%2e" -}}
+                {{- $url := print "/tags/" ($tag | urlize) "/" -}}
+                <a class="labels-tag" href="{{- $url | relLangURL -}}">{{- . -}}</a>
+            {{- end -}}
+        </p>
+    </li>
+</ul>
+

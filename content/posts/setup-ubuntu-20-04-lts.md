@@ -281,6 +281,8 @@ filetype plugin indent on
 
 설정을 추가했다면 ``vim`` 을 실행한 뒤, ``:PluginInstall`` 명령어를 입력해 플러그인 설치를 완료합니다.
 
+### IdeaVim
+
 ```shell
 echo '
 set scrolloff=5
@@ -366,13 +368,13 @@ mv cmdline-tools .android/
 ``.zshrc`` 아래에 다음 내용을 추가합니다.
 
 ```shell
-JAVA_HOME="/usr/lib/jvm/java-8-openjdk-amd64"
-ANDROID_HOME="$HOME/.android"
+echo "JAVA_HOME='/usr/lib/jvm/java-8-openjdk-amd64'
+ANDROID_HOME='$HOME/.android'
 
 export JAVA_HOME
 export ANDROID_HOME
 
-export PATH="$PATH:$JAVA_HOME/bin:$ANDROID_HOME/cmdline-tools/bin:$ANDROID_HOME/platform-tools"
+export PATH='$PATH:$JAVA_HOME/bin:$ANDROID_HOME/cmdline-tools/bin:$ANDROID_HOME/platform-tools'" > .zshrc
 ```
 
 추가된 내용을 ``source .zshrc`` 명령어로 업데이트한 뒤, ``sdkmanager`` 를 이용해 안드로이드 SDK 를 다운로드 받습니다.
@@ -415,6 +417,10 @@ sudo apt update && sudo apt install google-chrome-stable
 ```
 
 설치 후 ``Use System title bar and boarder`` 를 활성화 하고, ``ADBlock`` 을 설치 했다면 ``Allow Acceptable Ads`` 를 비활성화 합니다.
+
+```shell
+sudo sed -i 's;/usr/bin/google-chrome-stable;/usr/bin/google-chrome-stable --enable-features=WebUIDarkMode --force-dark-mode;g' /usr/share/applications/google-chrome.desktop
+```
 
 ### Jetbrains Tool box
 
