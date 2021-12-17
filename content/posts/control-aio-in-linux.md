@@ -1,12 +1,11 @@
-+++
-author = "junghyun397"
-title = "리눅스에서 liquidctl로 수냉쿨러 컨트롤 하기"
-date = 2020-08-13T12:21:07+09:00
-description = "리눅스에서 수냉쿨러를 컨트롤 하는 방법을 알아봅니다."
-categories = ["linux"]
-tags = ["system", "hardware"]
-
-+++
+---
+author: junghyun397
+title: 리눅스에서 liquidctl로 수냉쿨러 컨트롤 하기
+date: 2020-08-13T12:21:07+09:00
+description: 리눅스에서 수냉쿨러를 컨트롤 하는 방법을 알아봅니다.
+categories: [linux]
+tags: [system, hardware]
+---
 
 우선 전 Corsair 사의 일체형 쿨러인 ``H100i v2``를 4년간 사용하고 있었습니다. 우분투 18.04를 사용할 때는 윈도우에서 작동하는 CorsairLink에서 설정한 값이 잘 유지가 되었었지만, 어째 20.04로 넘어오니 부팅할 때 마다 수냉쿨러 설정값이 초기화 되더군요. 극저소음 빌드를 지향했기에 펌프와 팬 두 개가 웅웅대는 소음이 여간 거슬리는 게 아니었습니다. 물론 이를 해결할 수 있는 CorsairLink는 당연하게도(...) 리눅스를 지원하지 않았습니다.
 

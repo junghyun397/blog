@@ -1,12 +1,11 @@
-+++
-author = "junghyun397"
-title = "Github Actions로 Flutter 앱 빌드하기"
-date = 2021-03-26T15:27:32+09:00
-description = "Github Actions를 이용해 Flutter 앱을 여러 플랫폼으로 빌드하는 방법을 정리해 봤습니다."
-categories = ["devops"]
-tags = ["flutter", "CI/CD"]
-
-+++
+---
+author: junghyun397
+title: Github Actions로 Flutter 앱 빌드하기
+date: 2021-03-26T15:27:32+09:00
+description: Github Actions를 이용해 Flutter 앱을 여러 플랫폼으로 빌드하는 방법을 정리해 봤습니다.
+categories: [devops]
+tags: [flutter, CI/CD]
+---
 
 요즘 Github Actions 가 그렇게 맛집이라고 하더군요! 그래서 해 봤습니다: Github Actions 로 Flutter 앱 빌드하기. 이 글에서는 Github Actions에서 Flutter 앱을 Android APK 또는 AppBundle 로 빌드하는 방법을 소개하며, (작동하는지는 불확실하지만,) IOS ipa로 빌드하는 방법도 함께 소개합니다.
 

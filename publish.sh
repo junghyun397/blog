@@ -7,6 +7,14 @@ fi
 
 hugo
 
+echo "PUBLISH $1 $msg? [Y/n]"
+read awnser
+
+if [[ "$awnser" == "n" ]] || [[ "$awnser" == "N" ]] 
+then 
+    exit 1
+fi
+
 if [[ ! "$1" == "-b" ]] && [[ ! "$1" == "--blog" ]] 
 then
     cd public
