@@ -37,9 +37,6 @@ sudo apt install xdotool x11-xserver-utils gnome-tweak-tool gnome-shell-extensio
 
 # 편집기 및 입력기
 sudo apt install vim-gtk3 uim uim-byeoru
-
-# 한 줄로 모두 설치하기
-sudo apt update && sudo apt upgrade && sudo apt install build-essential make cmake clang node-typescript libdbus-1-dev libssl-dev cargo gdebi python3-pip ppa-purge openssh-server git curl screen net-tools pm-utils tldr screenfetch htop tree xdotool x11-xserver-utils gnome-tweak-tool gnome-shell-extensions vim-gtk3 uim uim-byeoru -y 
 ```
 
 ## Swap memory 추가
@@ -53,7 +50,7 @@ sudo mkswap /swapfile
 sudo swapon /swapfile
 ```
 
-## Zsh Shell{#zsh-shell}
+## Zsh Shell
 
 ``zsh`` 를 설치하고 기본 쉘을 ``zsh`` 로 변경합니다.
 
@@ -171,29 +168,6 @@ switch-to-workspace-4=['<Super>4']
 "
 ```
 
-``Altgr`` + ``hjkl`` 화살표 할당
-
-```shell
-echo "#!/bin/bash
-
-xmodmap -e 'keycode 108 = Mode_switch'
-xmodmap -e 'keycode 43 = h H Left H'
-xmodmap -e 'keycode 44 = j J Down J'
-xmodmap -e 'keycode 45 = k K Up K'
-xmodmap -e 'keycode 46 = l L Right L'" > ~/scripts/xmodmap.sh
-
-chmod +x ~/scripts/xmodmap.sh
-
-echo "[Desktop Entry]
-Type=Application
-Exec=$HOME/scripts/xmodmap.sh
-X-GNOME-Autostart-enabled=true
-Name=Xmodmap2
-Comment=" > ~/.config/autostart/xmodmap.desktop
-
-chmod +x ~/.config/autostart/xmodmap.desktop
-```
-
 #### Remove hot-keys
 
 ``Super+Num`` 꼴의 단축키 사용을 위해서는 ``gssetting`` 을 이용해 수동으로 ``dash-to-dock`` 의 ``hot-keys`` 설정을 비활성화할 필요가 있습니다.
@@ -201,42 +175,6 @@ chmod +x ~/.config/autostart/xmodmap.desktop
 ```shell
 gsettings set org.gnome.shell.extensions.dash-to-dock hot-keys false
 for i in $(seq 1 9); do gsettings set org.gnome.shell.keybindings switch-to-application-${i} "[]"; done
-```
-
-## Hibernate
-
-```shell
-sudo apt install hibernate
-```
-
-```shell
-sudo vi /etc/default/grub
-```
-
-```shell
-GRUB_CMDLINE_LINUX_DEFAULT="quiet splash resume=UUID=YOUR_VALUE"
-```
-
-```shell
-sudo update-grub
-```
-
-## WOL
-
-```shell
-sudo apt install wakeonlan
-```
-
-```shell
-echo "[Unit]
-Description=Configure Wake On LAN
-
-[Service]
-Type=oneshot
-ExecStart=/sbin/ethtool -s enp5s0 wol g
-
-[Install]
-WantedBy=basic.target" | sudo tee /etc/systemd/system/wol.service
 ```
 
 ## 한글 입력 {#hangul-input}
@@ -334,7 +272,7 @@ gh auth
 
 ### Docker
 
-```sh
+```shell
 curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
 echo \         
   "deb [arch=amd64 signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu \
@@ -348,7 +286,7 @@ sudo usermod -aG docker $USER
 
 #### Docker compose
 
-```sh
+```shell
 sudo curl -L "https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
 sudo ln -s /usr/local/bin/docker-compose /usr/bin/docker-compose
 sudo chmod +x /usr/local/bin/docker-compose

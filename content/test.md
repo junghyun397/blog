@@ -269,6 +269,14 @@ This is [an example](http://example.com/) inline link.
 
 [This link](http://example.net/) has no title attribute.
 
+### Referance
+
+An Quitation A[^A]
+[^A]: referance A
+
+An Quitation B[^B]
+[^B]: referance B
+
 ### Emphasis
 
 Markdown treats asterisks (`*`) and underscores (`_`) as indicators of
@@ -299,3 +307,5 @@ Inline math: $$ \varphi = \dfrac{1+\sqrt5}{2}= 1.6180339887… $$
 Block math:
 
 $$ \varphi = 1+\frac{1} {1+\frac{1} {1+\frac{1} {1+\cdots} } } $$
+
+

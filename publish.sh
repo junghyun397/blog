@@ -1,8 +1,9 @@
 #!/bin/bash
 
 msg="rebuilding site `date`"
-if [ $# -eq 2 ] 
-  then msg="$2"
+if [[ $# -eq 2 ]] 
+then 
+    msg="$2"
 fi
 
 hugo
