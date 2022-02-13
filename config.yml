@@ -3,7 +3,7 @@ title: junghyun397 Blog
 pagenate: 3
 languageCode: ko
 defaultContentLanguage: ko
-enableInlineShortcodes: true
+enableInlineShortcodes: false
 theme: PaperMod
 
 enableRobotsTXT: true
