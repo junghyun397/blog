@@ -92,7 +92,7 @@ Flutter를 사용하기 위해, ``ubuntu-latest`` 에서 ``Flutter Actions`` 을
 
 ### IOS 빌드 {#build-ios}
 
-IOS 빌드를 원한다면, 이 코드를 추가로 삽입하면 됩니다. 이 코드는 ``ipa`` 추출 전 단계의 폴더를 압축해 ``artifact``에 업로드하는 코드입니다. 하지만 안타깝게도 전 ``Apple Developer Program`` 이 없기에, ``ipa`` 빌드는 실험 해볼 수 없었습니다. 언제가 될지는 모르겠지만, ``99 USD / Year`` 의 ``Apple Developer Program`` 을 얻게 된다면 글을 업데이트 하도록 하겠습니다!
+IOS 빌드를 원한다면, 이 코드를 추가로 삽입하면 됩니다. 이 코드는 ``ipa`` 추출 전 단계의 폴더를 압축해 ``artifact``에 업로드하는 코드입니다. 하지만 안타깝게도 전 ``Apple Developer Program`` 이 없기에, ``ipa`` 빌드는 실험 해볼 수 없었습니다. 언제가 될지는 모르겠지만 Apple Developer Program 을 얻게 된다면 글을 업데이트 하도록 하겠습니다!
 
 ```yaml
   build_ios:
