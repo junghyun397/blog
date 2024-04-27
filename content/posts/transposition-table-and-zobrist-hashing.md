@@ -1,5 +1,5 @@
 ---
-draft: false
+draft: true
 author: junghyun397
 title: Transposition table과 Zobrist hashing
 date: 2022-11-28T05:20:41+09:00
