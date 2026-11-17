@@ -8,13 +8,7 @@
 
     function applyTheme(dark) {
         document.documentElement.classList.toggle("dark", dark);
-        const button = document.getElementById("theme-toggle");
-
-        if (button) {
-            button.hidden = false;
-            button.textContent = dark ? "☼" : "☽";
-            button.setAttribute("aria-pressed", String(dark));
-        }
+        document.getElementById("theme-toggle")?.setAttribute("aria-pressed", String(dark));
     }
 
     applyTheme(saved ? saved === "dark" : preference.matches);

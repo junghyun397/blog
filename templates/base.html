@@ -12,7 +12,10 @@
     <header class="mb-6 flex flex-col gap-2 pb-2 sm:pb-4">
         <div class="flex flex-col items-start gap-2 xs:flex-row xs:items-end">
             <a class="text-2xl font-semibold tracking-tight text-inherit" href="{{ config.base_url }}">{{ config.title }}</a>
-            <button id="theme-toggle" type="button" class="shrink-0 cursor-pointer text-xl sm:text-lg fond-bold" aria-pressed="false" hidden>☽</button>
+            <button id="theme-toggle" type="button" class="shrink-0 cursor-pointer text-xl sm:text-lg fond-bold" aria-pressed="false">
+                <span class="dark:hidden">☽</span>
+                <span class="hidden dark:inline">☼</span>
+            </button>
         </div>
         <nav class="flex flex-wrap gap-x-2 gap-y-1 text-base font-semibold">
             <a href="{{ get_url(path='@/about.md') }}">About</a>

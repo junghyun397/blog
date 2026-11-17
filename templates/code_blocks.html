@@ -1,0 +1,15 @@
+{% component code_blocks(content) %}
+{% for block in content | split(pat="</pre>") %}
+    {% if "<pre" in block %}
+        {% set attributes = block | split(pat="<code") | last | split(pat=">") | first %}
+        {% set title = attributes | regex_replace(pattern='^.*data-lang="([^"]*)".*$', rep='$1') %}
+        {% if 'data-title="' in attributes %}
+            {% set title = attributes | regex_replace(pattern='^.*data-title="([^"]*)".*$', rep='$1') %}
+        {% endif %}
+        {% set header = '<span class="code-header"><span class="min-w-0 break-all">' ~ (title | escape) ~ '</span><button type="button" class="shrink-0 cursor-pointer hover:underline">Copy</button></span>' %}
+        {{ block | regex_replace(pattern='(<pre[^>]*>)', rep='$1' ~ (header | replace(from='$', to='$$'))) | safe }}</pre>
+    {% else %}
+        {{ block | safe }}
+    {% endif %}
+{% endfor %}
+{% endcomponent code_blocks %}

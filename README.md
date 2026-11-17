@@ -1,5 +1,5 @@
 # Blog
-Powered by Zola and Tailwind CSS V4
+Powered by Zola, Tailwind CSS V4 and Cloudflare Workers
 
 ```sh
 npm ci

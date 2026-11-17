@@ -9,7 +9,6 @@ categories = ["linux"]
 tags = ["system", "ubuntu"]
 
 [extra]
-thumbnail = "https://user-images.githubusercontent.com/32453112/153777209-dfda3a00-5ace-4aa5-9f43-c14f6aee645d.png"
 show_toc = true
 +++
 
