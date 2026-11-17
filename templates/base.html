@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="{{ lang }}">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{% block title %}{{ config.title }}{% endblock title %}</title>
+    {% block metadata %}{% endblock metadata %}
+    <script src="{{ get_url(path='theme.js') }}"></script>
+    <link rel="stylesheet" href="{{ get_url(path='style.css') }}">
+</head>
+<body class="mx-auto max-w-[52rem] bg-white px-5 py-8 text-zinc-800 antialiased dark:bg-zinc-950 dark:text-zinc-200 sm:px-8 sm:py-10">
+    <header class="mb-6 flex flex-col gap-2 pb-2 sm:pb-4">
+        <div class="flex flex-col items-start gap-2 xs:flex-row xs:items-end">
+            <a class="text-2xl font-semibold tracking-tight text-inherit" href="{{ config.base_url }}">{{ config.title }}</a>
+            <button id="theme-toggle" type="button" class="shrink-0 cursor-pointer text-xl sm:text-lg fond-bold" aria-pressed="false" hidden>☽</button>
+        </div>
+        <nav class="flex flex-wrap gap-x-2 gap-y-1 text-base font-semibold">
+            <a href="{{ get_url(path='@/about.md') }}">About</a>
+            <a href="{{ get_url(path='categories/') }}">Categories</a>
+            <a href="{{ get_url(path='tags/') }}">Tags</a>
+        </nav>
+    </header>
+    <main id="main">{% block content %}{% endblock content %}</main>
+    <footer class="mt-8 flex items-center gap-2 text-xs text-zinc-500 dark:text-zinc-400">
+        <a class="text-inherit dark:text-inherit" href="https://github.com/junghyun397/blog/blob/master/LICENSE">CC0</a>
+        <a class="text-inherit dark:text-inherit" href="https://github.com/junghyun397/blog">Repo</a>
+        <a class="text-inherit dark:text-inherit" href="{{ config.base_url }}">do1ph.in</a>
+    </footer>
+</body>
+</html>

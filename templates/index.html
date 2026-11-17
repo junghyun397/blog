@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% block title %}{% if current_path != "/" %}{{ section.title }} · {% endif %}{{ config.title }}{% endblock title %}
+{% block content %}
+    {% if current_path == "/" %}
+        {% set posts = get_section(path="posts/_index.md") %}
+    {% else %}
+        {% set posts = section %}
+        <h1 class="mb-4 text-2xl font-semibold">{{ section.title }}</h1>
+    {% endif %}
+    {{ <post_list pages={posts.pages} /> }}
+{% endblock content %}

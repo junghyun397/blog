@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block title %}{% if term %}{{ term.name }}{% else %}{{ taxonomy.name | capitalize }}{% endif %} · {{ config.title }}{% endblock title %}
+{% block content %}
+    <h1 class="mb-4 text-2xl font-semibold">{% if term %}{{ term.name }}{% else %}{{ taxonomy.name | capitalize }}{% endif %}</h1>
+    {% if term %}
+        {{ <post_list pages={term.pages} /> }}
+    {% else %}
+        <ul class="flex flex-col gap-2">
+            {% for term in terms %}
+                <li><a href="{{ term.permalink }}">{{ term.name }}</a> <span class="text-sm text-zinc-500 dark:text-zinc-400">({{ term.pages | length }})</span></li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+{% endblock content %}

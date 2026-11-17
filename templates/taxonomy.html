@@ -1,0 +1,10 @@
+{% component taxonomy(page) %}
+<div class="flex flex-wrap gap-2 text-sm">
+    {% for category in page.taxonomies.categories | default(value=[]) %}
+        <a class="font-bold" href="{{ get_taxonomy_url(kind='categories', name=category) }}">{{ category }}</a>
+    {% endfor %}
+    {% for tag in page.taxonomies.tags | default(value=[]) %}
+        <a href="{{ get_taxonomy_url(kind='tags', name=tag) }}">{{ tag }}</a>
+    {% endfor %}
+</div>
+{% endcomponent taxonomy %}

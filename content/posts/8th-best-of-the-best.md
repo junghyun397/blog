@@ -1,11 +1,16 @@
----
-author: junghyun397
-title: Best of the Best 8기 수료 후기
-date: 2020-05-06T23:20:00+09:00
-description: 차세대 보안리더 양성 프로그램 - BoB 8기 과정을 글로 정리해 봤습니다.
-categories: [experience]
-tags: [security, course]
----
++++
+title = "Best of the Best 8기 수료 후기"
+description = "차세대 보안리더 양성 프로그램 - BoB 8기 과정을 글로 정리해 봤습니다."
+authors = ["junghyun397"]
+date = 2020-05-06T23:20:00+09:00
+
+[taxonomies]
+categories = ["experience"]
+tags = ["security", "course"]
+
+[extra]
+thumbnail = "https://user-images.githubusercontent.com/32453112/81252724-9ee11500-9061-11ea-84a9-c76c1577110f.jpg"
++++
 
 2019년 7월부터 2020년 3월까지, 약 9개월간 진행된 Best of the Best 8기 보안제품 개발 트랙을 수료 했습니다. 고등학교와 BoB활동을 동시에 진행 한만큼 힘든점도 많았고 양쪽 모두에 성실히 참여 했다고도 단정할 수 없지만, 힘들었던 만큼 얻어간 결과도 확실 하기에 정말로 추천 드릴만한 교육 과정이라 할 수 있습니다.
 

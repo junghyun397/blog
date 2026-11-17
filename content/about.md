@@ -1,12 +1,9 @@
----
-title: About
-description: About
-date: 2021-02-29T00:37:08+09:00
-autor: junghyun397
-comments: false
-ShowToc: false
-searchHidden: true
----
++++
+title = "About"
+description = "About"
+authors = ["junghyun397"]
+in_search_index = false
++++
 
 junghyun397 블로그, **[do1ph.in](https://do1ph.in)**
 

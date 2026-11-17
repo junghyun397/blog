@@ -1,0 +1,30 @@
+{% component post_list(pages) %}
+<div class="flex flex-col gap-8">
+    {% for post in pages %}
+        <article class="flex flex-col gap-1">
+            <a class="group flex flex-col items-start gap-2 text-inherit hover:no-underline dark:text-inherit" href="{{ post.permalink }}">
+                {% if post.extra.thumbnail %}
+                    <img class="size-20 object-cover sm:size-24" src="{{ post.extra.thumbnail }}" alt="" width="96" height="96" loading="lazy">
+                {% endif %}
+                <div class="flex min-w-0 w-full flex-col gap-1">
+                    <h2 class="text-base font-semibold leading-snug group-hover:underline sm:text-lg">{{ post.title }}</h2>
+                    {% set paragraphs = post.content | split(pat="<p>") %}
+                    {% if paragraphs | length > 1 %}
+                        <p class="line-clamp-2 break-words text-sm leading-relaxed text-zinc-600 dark:text-zinc-400">
+                            {% for paragraph in paragraphs %}
+                                {% if loop.index > 1 and loop.index <= 4 %}
+                                    {{ paragraph | split(pat="</p>") | first | striptags | safe }}
+                                {% endif %}
+                            {% endfor %}
+                        </p>
+                    {% endif %}
+                    {% if post.date %}
+                        <time class="text-sm text-zinc-500 dark:text-zinc-400" datetime="{{ post.date }}">{{ post.date | date(format='%Y-%m-%d') }}</time>
+                    {% endif %}
+                </div>
+            </a>
+            {{ <taxonomy page={post} /> }}
+        </article>
+    {% endfor %}
+</div>
+{% endcomponent post_list %}

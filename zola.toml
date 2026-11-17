@@ -1,13 +1,12 @@
 base_url = "https://do1ph.in"
 title = "JeongHyeon Choi's Blog"
 default_language = "ko"
-
-compile_sass = true
-build_search_index = true
-
-[markdown]
-higilight_code = true
+skip_content_templating = ["*.md", "**/*.md"]
+build_search_index = false
+taxonomies = [
+    { name = "categories" },
+    { name = "tags" },
+]
 
 [markdown.highlighting]
-theme = "catppuccin-mocha"
-
+theme = "ayu-mirage"

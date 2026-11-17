@@ -2,24 +2,19 @@
   "name": "blog",
   "version": "1.0.0",
   "description": "",
+  "author": "JeongHyeon Choi",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/junghyun397/blog.git"
+    "css": "tailwindcss -i ./styles/main.css -o ./static/style.css --minify",
+    "css:watch": "tailwindcss -i ./styles/main.css -o ./static/style.css --watch",
+    "build": "npm run css && zola build",
+    "dev": "concurrently \"npm run css:watch\" \"zola serve\""
   },
   "keywords": [],
-  "author": "",
-  "license": "ISC",
   "type": "commonjs",
-  "bugs": {
-    "url": "https://github.com/junghyun397/blog/issues"
-  },
-  "homepage": "https://github.com/junghyun397/blog#readme",
   "devDependencies": {
     "@tailwindcss/cli": "^4.3.5",
+    "concurrently": "^10.0.7",
     "tailwindcss": "^4.3.5"
   }
 }

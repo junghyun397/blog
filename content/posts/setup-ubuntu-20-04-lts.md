@@ -1,13 +1,16 @@
----
-author: junghyun397
-title: Ubuntu 20.04 LTS 설치 후 작업환경 구성하기
-date: 2020-04-25T19:00:00+09:00
-description: 최근 릴리스 된 우분투 20.04 장기 지원 버전을 기준으로 설치 후 필요한 작업 환경 구성 과정을 정리해 봤습니다.
-categories: [linux]
-tags: [ubuntu, gnome]
++++
+title = "Ubuntu 20.04 LTS 설치 후 작업환경 구성하기"
+description = "최근 릴리스 된 우분투 20.04 장기 지원 버전을 기준으로 설치 후 필요한 작업 환경 구성 과정을 정리해 봤습니다."
+authors = ["junghyun397"]
+date = 2020-04-25T19:00:00+09:00
 
-TocOpen: false
----
+[taxonomies]
+categories = ["linux"]
+tags = ["ubuntu", "gnome"]
+
+[extra]
+thumbnail = "https://user-images.githubusercontent.com/32453112/80278299-088f2400-8730-11ea-9b51-71e286b0567a.png"
++++
 
 ``우분투 20.04 장기 지원 버전(LTS)`` 이 릴리스 되었습니다. 매번 OS를 새로 설치할 때마다 삽질하지 않도록 우분투를 처음 설치했을 때 작업 환경을 세팅하는 과정을 글로 정리해 봤습니다. ``Pop! shell`` 및 ``ifcitx-hangul`` 설정과 ``uim-byeoru`` 설정, ``oh-my-zsh`` 설정과 ``vundle`` 등의 설정을 포함합니다.
 

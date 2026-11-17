@@ -1,15 +1,17 @@
----
-author: junghyun397
-title: Ubuntu 절전(Suspend)모드 풀림 해결 방법
-date: 2022-02-14T04:53:20+09:00
-description: 절전(Suspend)모드에 진입한 직후 알 수 없는 이유로 USB wake 신호를 받는 문제를 해결해 봅시다.
-categories: [linux]
-tags: [system, ubuntu]
-comments: true
-ShowToc: true
-math: false
-searchHidden: false
----
++++
+title = "Ubuntu 절전(Suspend)모드 풀림 해결 방법"
+description = "절전(Suspend)모드에 진입한 직후 알 수 없는 이유로 USB wake 신호를 받는 문제를 해결해 봅시다."
+authors = ["junghyun397"]
+date = 2022-02-14T04:53:20+09:00
+
+[taxonomies]
+categories = ["linux"]
+tags = ["system", "ubuntu"]
+
+[extra]
+thumbnail = "https://user-images.githubusercontent.com/32453112/153777209-dfda3a00-5ace-4aa5-9f43-c14f6aee645d.png"
+show_toc = true
++++
 
 **빠른 해답: 문제가 발생하는 USB 기기의 wakeup설정을 disable로 전환하면 됩니다.**
 

@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% block title %}{{ page.title }} · {{ config.title }}{% endblock title %}
+{% block metadata %}
+    <meta name="description" content="{{ page.description | default(value=page.title) }}">
+    <link rel="canonical" href="{{ page.permalink }}">
+{% endblock metadata %}
+{% block content %}
+    <article>
+        <header class="mb-5 flex flex-col gap-1">
+            <h1 class="text-2xl font-semibold leading-snug">{{ page.title }}</h1>
+            {% if page.date %}
+                <time class="text-sm text-zinc-500 dark:text-zinc-400" datetime="{{ page.date }}">{{ page.date | date(format='%Y-%m-%d') }}</time>
+            {% endif %}
+            {{ <taxonomy page={page} /> }}
+        </header>
+        {% if page.extra.show_toc and page.toc %}
+            <nav class="mb-5 felx-col gap-1">
+                <h2 class="font-semibold">Index</h2>
+                <ul class="mt-2 flex flex-col gap-1">
+                    {% for heading in page.toc %}
+                        <li><a href="{{ heading.permalink }}">{{ heading.title }}</a></li>
+                    {% endfor %}
+                </ul>
+            </nav>
+        {% endif %}
+        <div class="content">{{ page.content | safe }}</div>
+    </article>
+    <script src="{{ get_url(path='code-blocks.js') }}" defer></script>
+{% endblock content %}
