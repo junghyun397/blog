@@ -2,6 +2,6 @@
 Powered by Zola, Tailwind CSS V4 and Cloudflare Workers
 
 ```sh
-npm ci
-npm run dev
+pnpm install
+pnpm run dev
 ```
