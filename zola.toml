@@ -1,8 +1,8 @@
 base_url = "https://do1ph.in"
 title = "JeongHyeon Choi's Blog"
 default_language = "ko"
+build_search_index = true
 skip_content_templating = ["*.md", "**/*.md"]
-build_search_index = false
 taxonomies = [
     { name = "categories" },
     { name = "tags" },
@@ -10,3 +10,6 @@ taxonomies = [
 
 [markdown.highlighting]
 theme = "ayu-mirage"
+
+[search]
+index_format = "fuse_json"

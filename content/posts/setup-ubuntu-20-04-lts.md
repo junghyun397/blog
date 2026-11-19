@@ -5,8 +5,8 @@ authors = ["junghyun397"]
 date = 2020-04-25T19:00:00+09:00
 
 [taxonomies]
-categories = ["linux"]
-tags = ["ubuntu", "gnome"]
+categories = ["system"]
+tags = ["ubuntu"]
 
 [extra]
 thumbnail = "https://user-images.githubusercontent.com/32453112/80278299-088f2400-8730-11ea-9b51-71e286b0567a.png"

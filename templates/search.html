@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% block title %}{{ page.title }} · {{ config.title }}{% endblock title %}
+{% block metadata %}
+    <link rel="stylesheet" href="{{ get_url(path='pagefind/pagefind-ui.css') }}">
+{% endblock metadata %}
+{% block content %}
+    <h1 class="mb-4 text-2xl font-semibold">{{ page.title }}</h1>
+    <div id="search"></div>
+    <script src="{{ get_url(path='pagefind/pagefind-ui.js') }}"></script>
+    <script>new PagefindUI({ element: "#search", showImages: false });</script>
+{% endblock content %}

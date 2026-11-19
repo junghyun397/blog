@@ -1,5 +1,5 @@
 # Blog
-Powered by Zola, Tailwind CSS V4 and Cloudflare Workers
+Powered by Zola, PTailwind CSS V4, Pagefind and Cloudflare Workers
 
 ```sh
 pnpm install

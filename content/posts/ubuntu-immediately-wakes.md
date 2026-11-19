@@ -5,8 +5,8 @@ authors = ["junghyun397"]
 date = 2022-02-14T04:53:20+09:00
 
 [taxonomies]
-categories = ["linux"]
-tags = ["system", "ubuntu"]
+categories = ["system"]
+tags = ["ubuntu"]
 
 [extra]
 show_toc = true

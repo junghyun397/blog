@@ -7,14 +7,16 @@
   "scripts": {
     "css": "tailwindcss -i ./styles/main.css -o ./static/style.css --minify",
     "css:watch": "tailwindcss -i ./styles/main.css -o ./static/style.css --watch",
-    "build": "npm run css && zola build",
-    "dev": "concurrently \"npm run css:watch\" \"zola serve\""
+    "search": "node scripts/search.mjs",
+    "build": "pnpm run css && zola build && pnpm run search",
+    "dev": "zola build && pnpm run search static/pagefind && concurrently \"pnpm run css:watch\" \"zola serve\""
   },
   "keywords": [],
   "type": "commonjs",
   "devDependencies": {
     "@tailwindcss/cli": "^4.3.5",
     "concurrently": "^10.0.7",
+    "pagefind": "^1.6.0",
     "tailwindcss": "^4.3.5",
     "wrangler": "^4.164.0"
   }

@@ -2,9 +2,16 @@
 <div class="flex flex-col gap-8">
     {% for post in pages %}
         <article class="flex flex-col gap-1">
-            <a class="group flex flex-col items-start gap-2 text-inherit hover:no-underline dark:text-inherit" href="{{ post.permalink }}">
+            <a 
+                class="group flex flex-col items-start gap-2 text-inherit hover:no-underline dark:text-inherit"
+                href="{{ post.permalink }}"
+                ontouchstart=""
+            >
                 {% if post.extra.thumbnail %}
-                    <img class="size-20 object-cover sm:size-24" src="{{ post.extra.thumbnail }}" alt="" width="96" height="96" loading="lazy">
+                    <img 
+                        class="size-20 object-cover sm:size-24"
+                        src="{{ post.extra.thumbnail }}" alt="" width="96" height="96" loading="lazy"
+                    >
                 {% endif %}
                 <div class="flex min-w-0 w-full flex-col gap-1">
                     <h2 class="text-base font-semibold leading-snug group-hover:underline group-active:underline sm:text-lg">{{ post.title }}</h2>
