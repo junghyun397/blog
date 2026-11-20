@@ -28,7 +28,9 @@
             <a href="{{ get_url(path='@/search.md') }}">Search</a>
         </nav>
     </header>
-    <main id="main">{% block content %}{% endblock content %}</main>
+    {% block main %}
+        <main id="main">{% block content %}{% endblock content %}</main>
+    {% endblock main %}
     <footer class="flex items-center gap-2 text-xs text-zinc-500 dark:text-zinc-400">
         <a class="text-inherit dark:text-inherit" href="https://github.com/junghyun397/blog/blob/master/LICENSE">CC0</a>
         <a class="text-inherit dark:text-inherit" href="https://github.com/junghyun397/blog">Repo</a>

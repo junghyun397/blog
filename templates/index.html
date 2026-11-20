@@ -1,11 +1,32 @@
 {% extends "base.html" %}
 {% block title %}{% if current_path != "/" %}{{ section.title }} · {% endif %}{{ config.title }}{% endblock title %}
-{% block content %}
+{% block main %}
     {% if current_path == "/" %}
         {% set posts = get_section(path="posts/_index.md") %}
+        {% set pages = posts.pages[:posts.paginate_by] %}
+        {% set page_count = posts.pages | length / posts.paginate_by | float %}
+        {% set page_count = page_count | round(method="ceil") | int %}
+        {% set current = 1 %}
+        {% set first = posts.permalink %}
+        {% set base = first ~ "page/" %}
     {% else %}
-        {% set posts = section %}
-        <h1 class="mb-4 text-2xl font-semibold">{{ section.title }}</h1>
+        {% set pages = paginator.pages %}
+        {% set current = paginator.current_index %}
+        {% set page_count = paginator.number_pagers %}
+        {% set first = paginator.first %}
+        {% set base = paginator.base_url %}
     {% endif %}
-    {{ <post_list pages={posts.pages} /> }}
-{% endblock content %}
+    <main id="main">
+        {{ <post_list pages={pages} /> }}
+    </main>
+    {% set page_count = [1, page_count] | sort | last %}
+    <nav class="flex flex-wrap items-center gap-5 text-base">
+        {% for number in range(start=1, end=page_count + 1) %}
+            {% if number == current %}
+                <span class="font-bold">{{ number }}</span>
+            {% else %}
+                <a href="{% if number == 1 %}{{ first }}{% else %}{{ base }}{{ number }}/{% endif %}">{{ number }}</a>
+            {% endif %}
+        {% endfor %}
+    </nav>
+{% endblock main %}
