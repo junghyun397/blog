@@ -1,0 +1,19 @@
+{% component heading_anchors(source, content) %}
+    {% if "{#" in source %}
+        {% set marked = source | replace(from="{#", to="{.explicit-anchor #") | markdown %}
+        {% for heading in marked | split(pat="<h") %}
+            {% set attributes = heading | split(pat=">") | first %}
+            {% if ' class="explicit-anchor' in attributes %}
+                {% set tag = "<h" ~ (attributes | split(pat=' class="explicit-anchor') | first) %}
+                {% set id = (attributes | split(pat='"'))[1] %}
+                {% set fragment = id | replace(from="%", to="%25") %}
+                {% set_global content = content | replace(from=tag, to=tag ~ ' data-heading-anchor="#' ~ fragment ~ '"') %}
+            {% endif %}
+        {% endfor %}
+        {% set content = content | regex_replace(
+            pattern='(?s)<h([1-6]) id="([^"]+)" data-heading-anchor="([^"]+)"([^>]*)>(.*?)</h[1-6]>',
+            rep='<h$1 id="$2"$4><a class="heading-link" href="$3">$5<span class="heading-marker" aria-hidden="true">#</span></a></h$1>'
+        ) %}
+    {% endif %}
+    {{ <code_blocks content={content} /> }}
+{% endcomponent heading_anchors %}
