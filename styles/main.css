@@ -36,6 +36,8 @@
     .content h2 { @apply mt-6 text-xl font-semibold; }
     .content h3 { @apply mt-5 text-lg font-semibold; }
     .content h4 { @apply mt-4 font-semibold; }
+    .heading-link { @apply text-inherit focus-visible:underline; }
+    .heading-marker { @apply ms-1 inline-block align-baseline text-[0.85em] font-normal text-zinc-500 dark:text-zinc-400; }
     .content ul { @apply list-disc pl-6; }
     .content ol { @apply list-decimal pl-6; }
     .content li + li { @apply mt-2; }

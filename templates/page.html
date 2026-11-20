@@ -23,7 +23,8 @@
                 </ul>
             </nav>
         {% endif %}
-        <div class="content">{{ <code_blocks content={page.content} /> }}</div>
+        {% set source = load_data(path="content/" ~ page.relative_path, format="plain") %}
+        <div class="content">{{ <heading_anchors source={source} content={page.content} /> }}</div>
     </article>
     <script src="{{ get_url(path='code-blocks.js') }}" defer></script>
 {% endblock content %}
