@@ -1,7 +1,5 @@
 +++
 title = "About"
-description = "About"
-authors = ["junghyun397"]
 in_search_index = false
 +++
 

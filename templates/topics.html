@@ -1,0 +1,12 @@
+{% extends "page.html" %}
+{% block content %}
+    <div class="flex flex-col gap-4 sm:gap-6">
+        {% for kind in ["categories", "tags"] %}
+            {% set taxonomy = get_taxonomy(kind=kind) %}
+            <section>
+                <h2 class="mb-2 text-xl font-semibold">{{ kind | capitalize }}</h2>
+                {{ <term_list terms={taxonomy.items} /> }}
+            </section>
+        {% endfor %}
+    </div>
+{% endblock content %}

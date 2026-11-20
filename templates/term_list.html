@@ -1,0 +1,7 @@
+{% component term_list(terms) %}
+<ul class="flex flex-col gap-2">
+    {% for term in terms %}
+        <li><a href="{{ term.permalink }}">{{ term.name }}</a> <span class="text-sm text-zinc-500 dark:text-zinc-400">({{ term.pages | length }})</span></li>
+    {% endfor %}
+</ul>
+{% endcomponent term_list %}

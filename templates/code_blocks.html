@@ -6,7 +6,7 @@
         {% if 'data-title="' in attributes %}
             {% set title = attributes | regex_replace(pattern='^.*data-title="([^"]*)".*$', rep='$1') %}
         {% endif %}
-        {% set header = '<span class="code-header"><span class="min-w-0 break-all">' ~ (title | escape) ~ '</span><button type="button" class="shrink-0 cursor-pointer hover:underline">Copy</button></span>' %}
+        {% set header = '<span class="code-header"><span class="max-w-full shrink-0 truncate">' ~ (title | escape) ~ '</span><button type="button" class="min-w-0 truncate cursor-pointer hover:underline">Copy</button></span>' %}
         {{ block | regex_replace(pattern='(<pre[^>]*>)', rep='$1' ~ (header | replace(from='$', to='$$'))) | safe }}</pre>
     {% else %}
         {{ block | safe }}
